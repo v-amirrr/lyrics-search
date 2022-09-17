@@ -22,7 +22,7 @@ const Header = () => {
         <>
             <HeaderContainer initial='hidden' animate='visible' exit='exit' variants={headerVariants}>
                 <div className='header-title'>
-                    <h1>search a song and get its lyric</h1>
+                    <h1>enter the song's name and get the lyric</h1>
                 </div>
 
                 <form className='header-form'>
