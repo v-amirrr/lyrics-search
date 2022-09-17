@@ -38,9 +38,7 @@ html {
 }
 
 body {
-    user-select: none;
-    -webkit-user-drag: none;
-    overflow: hidden;
+    font-family: 'Outfit', sans-serif;
 }
 
 :any-link {
