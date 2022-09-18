@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from './Header';
+import Search from './Search';
 
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -9,7 +9,7 @@ const HomePage = () => {
     return (
         <>
             <HomePageContainer>
-                <Header />
+                <Search />
             </HomePageContainer>
         </>
     );
@@ -17,6 +17,7 @@ const HomePage = () => {
 
 const HomePageContainer = styled(motion.section)`
     width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
