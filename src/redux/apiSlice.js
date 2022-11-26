@@ -10,6 +10,6 @@ const apiSlice = createApi({
     }),
 });
 
-export const { useGetChartQuery, useGetTrackQuery } = apiSlice;
+export const { useGetTrackQuery } = apiSlice;
 
 export default apiSlice;

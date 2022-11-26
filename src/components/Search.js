@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Songs from './Songs';
+
 import { useGetTrackQuery } from '../redux/apiSlice';
 
 import styled from 'styled-components';
@@ -7,24 +9,25 @@ import { motion } from 'framer-motion';
 
 const searchVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, scaleZ: 1, transition: { duration: 0.4, type: 'tween' } },
+    visible: { opacity: 1, transition: { duration: 0.4, type: 'tween' } },
     exit: { opacity: 0, transition: { duration: 0.4, type: 'tween' } }
 };
 
 const Search = () => {
 
     const [searchInput, setSearchInput] = useState("");
-    const { data } = useGetTrackQuery(searchInput);
+    const [searchButtonClicked , setSearchButtonClicked] = useState(false);
+
+    const { data } = useGetTrackQuery(searchInput, { skip: !searchButtonClicked });
     
     const searchButtonHandler = e => {
         e.preventDefault();
-        console.log(data);
-        setSearchInput("");
+        setSearchButtonClicked(true);
     };
 
     return (
         <>
-            <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants}>
+            <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={searchButtonClicked ? 1 : 0}>
                 <div className='search-title'>
                     <h1>search the song and get the lyric</h1>
                 </div>
@@ -34,18 +37,26 @@ const Search = () => {
                     <motion.button whileTap={{ scale: 0.9 }} type='submit' onClick={searchButtonHandler}>search</motion.button>
                 </form>
             </SearchContainer>
+
+            {
+                data 
+                &&
+                <Songs data={data} />
+            }
         </>
     );
 };
 
 const SearchContainer = styled(motion.div)`
     width: 80%;
+    height: ${props => props.data ? "20%" : "100%"};
     margin: 2rem;
     padding: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    transition: height .3s;
 
     .search-title {
         width: 60%;

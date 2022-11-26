@@ -19,7 +19,7 @@ const HomePageContainer = styled(motion.section)`
     width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     background-color: #ffffff11;
