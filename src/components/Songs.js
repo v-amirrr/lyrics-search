@@ -1,35 +1,74 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import Loader from "./Loader";
 
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const songsVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 50 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4, type: 'tween' } },
-    exit: { opacity: 0, scale: 0.8, y: 50, transition: { duration: 0.4, type: 'tween' } }
+    visible: { transition: { staggerChildren: 0.05 } },
+    exit: { opacity: 0, transition: { duration: 0.2, type: 'tween', when: "beforeChildren" } }
 };
 
-const Songs = ({ data }) => {
+const songVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 50 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, type: 'tween' } }
+};
+
+const Songs = ({ data, isLoading }) => {
+
+    const [loaderShow, setLoaderShow] = useState(false);
+
+    useEffect(() => {
+        setLoaderShow(true);
+        if (!isLoading) {
+            setTimeout(() => {
+                setLoaderShow(false);
+            }, 1000);
+        }
+    }, [data]);
 
     return (
         <>
-            <SongsContainer initial='hidden' animate='visible' exit='exit' variants={songsVariants}>
-                {
-                    data?.message.body.track_list.map(item => (
-                        <div key={item.track.track_id}>
-                            {item.track.track_name}
-                        </div>
-                    ))
-                }
+            <SongsContainer>
+                    <AnimatePresence exitBeforeEnter>
+                        {
+                            loaderShow
+                            ?
+                                <Loader key="loader" />
+                            :
+                            <motion.div key="songs" className='songs' initial='hidden' animate='visible' exit='exit' variants={songsVariants}>
+                                {
+                                    data?.message?.body?.track_list.map(item => (
+                                        <Song key={item.track.track_id} variants={songVariants}>
+                                            {item.track.track_name}
+                                        </Song>
+                                    ))
+                                }
+                            </motion.div>
+                        }
+                    </AnimatePresence>
             </SongsContainer>
         </>
     );
 };
 
 const SongsContainer = styled(motion.section)`
-    width: 80%;
     margin: 2rem;
     padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+
+    .songs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+`;
+
+const Song = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;

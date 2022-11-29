@@ -4,19 +4,19 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const loaderVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 50 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4, type: 'tween' } },
-    exit: { opacity: 0, scale: 0.8, y: 50, transition: { duration: 0.4, type: 'tween' } }
+    hidden: { opacity: 0, scale: 0 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.3, type: 'tween' } },
+    exit: { opacity: 0, scale: 0, transition: { duration: 0.3, type: 'tween' } }
 };
 
 const Loader = () => {
     return (
         <>
             <LoaderContainer initial='hidden' animate='visible' exit='exit' variants={loaderVariants}>
-                <div class="loader">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
+                <div className="loader">
+                    <div className="line"></div>
+                    <div className="line"></div>
+                    <div className="line"></div>
                 </div>
             </LoaderContainer>
         </>

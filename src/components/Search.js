@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Songs from './Songs';
 
@@ -18,16 +18,23 @@ const Search = () => {
     const [searchInput, setSearchInput] = useState("");
     const [searchButtonClicked , setSearchButtonClicked] = useState(false);
 
-    const { data } = useGetTrackQuery(searchInput, { skip: !searchButtonClicked });
+    const { data, isLoading, isSuccess } = useGetTrackQuery(searchInput, { skip: !searchButtonClicked });
     
     const searchButtonHandler = e => {
         e.preventDefault();
         setSearchButtonClicked(true);
+        setTimeout(() => {
+            setSearchButtonClicked(false);
+        }, 1000);
     };
+
+    useEffect(() => {
+        setSearchButtonClicked(false);
+    }, []);
 
     return (
         <>
-            <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={searchButtonClicked ? 1 : 0}>
+            <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading ? 1 : 0}>
                 <div className='search-title'>
                     <h1>search the song and get the lyric</h1>
                 </div>
@@ -41,7 +48,7 @@ const Search = () => {
             {
                 data 
                 &&
-                <Songs data={data} />
+                <Songs data={data} isLoading={isLoading} isSuccess={isSuccess} />
             }
         </>
     );
