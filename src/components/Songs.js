@@ -7,23 +7,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const songsVariants = {
     visible: { transition: { staggerChildren: 0.05 } },
-    exit: { opacity: 0, transition: { duration: 0.2, type: 'tween', when: "beforeChildren" } }
+    exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3, type: 'tween', when: "beforeChildren" } }
 };
 
 const songVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 50 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, type: 'tween' } }
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, type: 'tween' } },
 };
 
 const Songs = ({ data, isLoading }) => {
 
-    const [loaderShow, setLoaderShow] = useState(false);
+    const [loaderShow, setLoaderShow] = useState(true);
+    const [songsList, setSongsList] = useState([...data]);
 
     useEffect(() => {
         setLoaderShow(true);
         if (!isLoading) {
             setTimeout(() => {
                 setLoaderShow(false);
+                setSongsList([...data]);
             }, 1000);
         }
     }, [data]);
@@ -39,7 +41,7 @@ const Songs = ({ data, isLoading }) => {
                             :
                             <motion.div key="songs" className='songs' initial='hidden' animate='visible' exit='exit' variants={songsVariants}>
                                 {
-                                    data?.message?.body?.track_list.map(item => (
+                                    songsList?.map(item => (
                                         <Song key={item.track.track_id} variants={songVariants}>
                                             {item.track.track_name}
                                         </Song>

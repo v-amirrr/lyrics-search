@@ -18,7 +18,12 @@ const Search = () => {
     const [searchInput, setSearchInput] = useState("");
     const [searchButtonClicked , setSearchButtonClicked] = useState(false);
 
-    const { data, isLoading, isSuccess } = useGetTrackQuery(searchInput, { skip: !searchButtonClicked });
+    const { data, isLoading, isSuccess } = useGetTrackQuery(searchInput, { 
+        skip: !searchButtonClicked,
+        selectFromResult: ({ data }) => ({
+            data: data?.message?.body?.track_list,
+        }),
+    });
     
     const searchButtonHandler = e => {
         e.preventDefault();
