@@ -48,7 +48,7 @@ const Search = () => {
             <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading ? 1 : 0} clearButtonShow={searchInput ? 1 : 0}>
                 <form className='search-form'>
                     <div className='search-from-input'>
-                        <input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} placeholder="Search" autoFocus />
+                        <input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} placeholder="Search..." autoFocus />
                         <i className='search-form-clear-icon' onClick={clearButtonHandler}><IoClose /></i>
                     </div>
                     <motion.button whileTap={{ scale: 0.9 }} type='submit' onClick={searchButtonHandler}>search</motion.button>
@@ -130,8 +130,13 @@ const SearchContainer = styled(motion.div)`
             justify-content: center;
             align-items: center;
             background-color: #ffffff08;
+            transition: background .2s;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
             height: 2.5rem;
+
+            &:hover {
+                background-color: #ffffff15;
+            }
         }
     }
 `;
