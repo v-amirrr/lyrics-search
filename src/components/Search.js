@@ -45,7 +45,7 @@ const Search = () => {
 
     return (
         <>
-            <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading ? 1 : 0} clearButtonShow={searchInput ? 1 : 0}>
+            <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading ? 1 : 0} clearbuttonshow={searchInput ? 1 : 0}>
                 <form className='search-form'>
                     <div className='search-from-input'>
                         <input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} placeholder="Search..." autoFocus />
@@ -107,7 +107,7 @@ const SearchContainer = styled(motion.div)`
                 align-items: center;
                 position: absolute;
                 right: 5%;
-                transform: ${props => props.clearButtonShow ? "scale(1)" : "scale(0)"};
+                transform: ${props => props.clearbuttonshow ? "scale(1)" : "scale(0)"};
                 border-radius: 50%;
                 font-size: 1.3rem;
                 cursor: pointer;
