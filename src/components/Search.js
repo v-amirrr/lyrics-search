@@ -4,6 +4,8 @@ import Songs from './Songs';
 
 import { useGetTrackQuery } from '../redux/apiSlice';
 
+import { IoClose } from 'react-icons/io5';
+
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
@@ -33,25 +35,32 @@ const Search = () => {
         }, 1000);
     };
 
+    const clearButtonHandler = () => {
+        setSearchInput("");
+    };
+
     useEffect(() => {
         setSearchButtonClicked(false);
     }, []);
 
     return (
         <>
-            <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading ? 1 : 0}>
+            <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading ? 1 : 0} clearButtonShow={searchInput ? 1 : 0}>
                 <div className='search-title'>
                     <h1>search the song and get the lyric</h1>
                 </div>
 
                 <form className='search-form'>
-                    <input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} autoFocus />
+                    <div className='search-from-input'>
+                        <input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} autoFocus />
+                        <i className='search-form-clear-icon' onClick={clearButtonHandler}><IoClose /></i>
+                    </div>
                     <motion.button whileTap={{ scale: 0.9 }} type='submit' onClick={searchButtonHandler}>search</motion.button>
                 </form>
             </SearchContainer>
 
             {
-                data 
+                data
                 &&
                 <Songs data={data} isLoading={isLoading} isSuccess={isSuccess} />
             }
@@ -71,7 +80,7 @@ const SearchContainer = styled(motion.div)`
     transition: height .3s;
 
     .search-title {
-        width: 60%;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -87,30 +96,48 @@ const SearchContainer = styled(motion.div)`
     }
 
     .search-form {
-        width: 60%;
         margin: 1rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
 
-        input {
-            all: unset;
-            width: 70%;
-            padding: .7rem;
-            margin: .5rem;
-            border-radius: 7px;
-            font-size: 1rem;
-            font-weight: 200;
-            font-family: 'Outfit', sans-serif;
-            background-color: #ffffff08;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        .search-from-input {
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            input {
+                all: unset;
+                padding: 0 .7rem;
+                margin: .5rem;
+                border-radius: 7px;
+                font-size: 1rem;
+                font-weight: 200;
+                font-family: 'Outfit', sans-serif;
+                background-color: #ffffff08;
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+                height: 2.5rem;
+            }
+            
+            .search-form-clear-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                right: 5%;
+                transform: ${props => props.clearButtonShow ? "scale(1)" : "scale(0)"};
+                border-radius: 50%;
+                font-size: 1.3rem;
+                cursor: pointer;
+                transition: transform .2s;
+            }
         }
 
         button {
             all: unset;
-            width: 70%;
-            padding: .7rem;
+            padding: 0 .7rem;
             border-radius: 7px;
             cursor: pointer;
             user-select: none;
@@ -123,6 +150,8 @@ const SearchContainer = styled(motion.div)`
             justify-content: center;
             align-items: center;
             background-color: #ffffff08;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            height: 2.5rem;
         }
     }
 `;
