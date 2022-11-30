@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Songs from './Songs';
 
@@ -37,17 +37,20 @@ const Search = () => {
 
     const clearButtonHandler = () => {
         setSearchInput("");
+        searchInputRef.current.focus();
     };
 
     useEffect(() => {
         setSearchButtonClicked(false);
     }, []);
 
+    const searchInputRef = useRef();
+
     return (
         <>
             <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading ? 1 : 0} clearbuttonshow={searchInput ? 1 : 0}>
                 <form className='search-form'>
-                    <input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} placeholder="Search..." autoFocus />
+                    <input ref={searchInputRef} type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} placeholder="Search..." autoFocus />
                     <i className='search-form-clear-icon' onClick={clearButtonHandler}><IoClose /></i>
                     <button type='submit' onClick={searchButtonHandler}>search</button>
                 </form>
