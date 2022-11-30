@@ -46,10 +46,6 @@ const Search = () => {
     return (
         <>
             <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading ? 1 : 0} clearButtonShow={searchInput ? 1 : 0}>
-                <div className='search-title'>
-                    <h1>search the song and get the lyric</h1>
-                </div>
-
                 <form className='search-form'>
                     <div className='search-from-input'>
                         <input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} autoFocus />
@@ -78,22 +74,6 @@ const SearchContainer = styled(motion.div)`
     align-items: center;
     flex-direction: column;
     transition: height .3s;
-
-    .search-title {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: -2px;
-            word-spacing: 5px;
-            white-space: nowrap;
-            text-transform: uppercase;
-        }
-    }
 
     .search-form {
         margin: 1rem;
