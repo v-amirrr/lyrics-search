@@ -67,7 +67,7 @@ const Search = () => {
 const SearchContainer = styled(motion.div)`
     width: 80%;
     height: ${props => props.data ? "20%" : "100%"};
-    margin: 2rem;
+    margin-top: 2rem;
     padding: 2rem;
     display: flex;
     justify-content: center;
