@@ -6,13 +6,13 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const songsVariants = {
-    visible: { transition: { staggerChildren: 0.05 } },
+    visible: { transition: { staggerChildren: 0.1 } },
     exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3, type: 'tween', when: "beforeChildren" } }
 };
 
 const songVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3, type: 'tween' } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, type: 'tween' } },
 };
 
 const Songs = ({ data, isLoading }) => {
@@ -107,11 +107,11 @@ const Song = styled(motion.div)`
     flex-direction: column;
     width: 12rem;
     height: 8rem;
-    border-radius: 7px;
+    border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 12px;
     cursor: pointer;
     background-color: #ffffff08;
-    margin: 1rem;
+    margin: .5rem;
     font-family: 'Outfit', sans-serif;
     text-align: center;
     overflow: hidden;
@@ -156,7 +156,7 @@ const Song = styled(motion.div)`
 
         p {
             position: absolute;
-            bottom: 1rem;
+            bottom: .5rem;
         }
     }
 

@@ -47,11 +47,9 @@ const Search = () => {
         <>
             <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading ? 1 : 0} clearbuttonshow={searchInput ? 1 : 0}>
                 <form className='search-form'>
-                    <div className='search-from-input'>
-                        <input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} placeholder="Search..." autoFocus />
-                        <i className='search-form-clear-icon' onClick={clearButtonHandler}><IoClose /></i>
-                    </div>
-                    <motion.button whileTap={{ scale: 0.9 }} type='submit' onClick={searchButtonHandler}>search</motion.button>
+                    <input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} placeholder="Search..." autoFocus />
+                    <i className='search-form-clear-icon' onClick={clearButtonHandler}><IoClose /></i>
+                    <button type='submit' onClick={searchButtonHandler}>search</button>
                 </form>
             </SearchContainer>
 
@@ -76,66 +74,61 @@ const SearchContainer = styled(motion.div)`
     transition: height .3s;
 
     .search-form {
+        position: relative;
         margin: 1rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 50px;
+        font-family: 'Outfit', sans-serif;
+        background-color: #ffffff08;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        width: 20rem;
+        height: 2.5rem;
 
-        .search-from-input {
-            width: 100%;
-            position: relative;
+        input {
+            all: unset;
+            padding: 0 1.5rem 0 .7rem;
+            font-size: 1rem;
+            font-weight: 200;
+        }
+        
+        .search-form-clear-icon {
             display: flex;
             justify-content: center;
             align-items: center;
-
-            input {
-                all: unset;
-                padding: 0 1.5rem 0 .7rem;
-                margin: .5rem;
-                border-radius: 7px;
-                font-size: 1rem;
-                font-weight: 200;
-                font-family: 'Outfit', sans-serif;
-                background-color: #ffffff08;
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-                height: 2.5rem;
-            }
-            
-            .search-form-clear-icon {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                right: 5%;
-                transform: ${props => props.clearbuttonshow ? "scale(1)" : "scale(0)"};
-                border-radius: 50%;
-                font-size: 1.3rem;
-                cursor: pointer;
-                transition: transform .2s;
-            }
+            position: absolute;
+            right: 5.2rem;
+            transform: ${props => props.clearbuttonshow ? "scale(1)" : "scale(0)"};
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: transform .2s;
         }
 
         button {
             all: unset;
-            padding: 0 .7rem;
-            border-radius: 7px;
+            border-left: 1.3px solid #ffffff22;
+            border-radius: 0 50px 50px 0;
             cursor: pointer;
             user-select: none;
             text-transform: uppercase;
-            font-size: 1.2rem;
             letter-spacing: -1px;
             font-weight: 600;
             font-family: 'Outfit', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ffffff08;
             transition: background .2s;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
             height: 2.5rem;
+            width: 5rem;
 
             &:hover {
                 background-color: #ffffff15;
+            }
+
+            &:active {
+                background-color: #ffffff22;
             }
         }
     }
