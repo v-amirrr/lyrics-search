@@ -3,6 +3,7 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import HomePage from './components/HomePage';
+import WarningPopup from './components/WarningPopup';
 
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
@@ -15,6 +16,7 @@ const App = () => {
         <>
             <Background><img src='/images/bg.jpg' alt="background" /></Background>
             <AnimatePresence>
+                <WarningPopup />
                 <Routes location={location} key={location.key}>
                     <Route path="/" element={<HomePage />} />
                 </Routes>
