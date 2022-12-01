@@ -30,8 +30,6 @@ const Songs = ({ data, isLoading }) => {
         }
     }, [data]);
 
-    console.log(songsList)
-
     return (
         <>
             <SongsContainer>
@@ -46,7 +44,7 @@ const Songs = ({ data, isLoading }) => {
                                     songsList?.map(item => (
                                         <Song key={item.track.track_id} variants={songVariants} whileTap={{ scale: 0.8 }}>
                                             <p className='song-name'>{item.track.track_name}</p>
-                                            <p className='song-artist'>{item.track.artist_name}</p>{console.log(item?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name)}
+                                            <p className='song-artist'>{item.track.artist_name}</p>
                                             <p className='song-genre'>{item?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}</p>
                                             <div className='song-hover'><p>Click For More Details</p></div>
                                         </Song>
@@ -81,6 +79,10 @@ const SongsContainer = styled(motion.section)`
         max-height: 90%;
         overflow: hidden scroll;
 
+        @media (max-width: 745px) {
+            max-width: 100%;
+        }
+
         /* width */
         ::-webkit-scrollbar {
             width: .2rem;
@@ -111,7 +113,7 @@ const Song = styled(motion.div)`
     box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 12px;
     cursor: pointer;
     background-color: #ffffff08;
-    margin: .5rem;
+    margin: 1rem;
     font-family: 'Outfit', sans-serif;
     text-align: center;
     overflow: hidden;
@@ -141,29 +143,35 @@ const Song = styled(motion.div)`
     }
 
     .song-hover {
-        background: linear-gradient(0deg, rgb(0,0,0) 2%, rgba(0,212,255,0) 80%);
         font-weight: 500;
-        font-size: .8rem;
+        font-size: .5rem;
         width: 100%;
-        height: 100%;
+        height: 1.5rem;
         position: absolute;
-        top: 5%;
-        opacity: 0;
+        bottom: 0;
+        opacity: 1;
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: top .3s, opacity .3s;
-
-        p {
-            position: absolute;
-            bottom: .5rem;
-        }
+        background-color: #ffffff10;
+        transition: opacity .3s, bottom .3s, background .3s;
     }
 
     @media (hover: hover) and (pointer: fine) and (min-width: 745px) {
+        margin: .5rem;
+
+        .song-hover {
+            bottom: -1rem;
+            opacity: 0;
+
+            &:hover {
+                background-color: #ffffff22;
+            }
+        }
+
         &:hover {
             .song-hover {
-                top: 0;
+                bottom: 0;
                 opacity: 1;
             }
         }
