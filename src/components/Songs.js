@@ -15,20 +15,22 @@ const songVariants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, type: 'tween' } },
 };
 
-const Songs = ({ data, isLoading }) => {
+const Songs = ({ data, isLoading, searchButtonClicked }) => {
 
     const [loaderShow, setLoaderShow] = useState(true);
     const [songsList, setSongsList] = useState([...data]);
 
     useEffect(() => {
-        setLoaderShow(true);
-        if (!isLoading) {
-            setTimeout(() => {
-                setLoaderShow(false);
-                setSongsList([...data]);
-            }, 1000);
+        if (searchButtonClicked) {
+            setLoaderShow(true);
+            if (!isLoading) {
+                setTimeout(() => {
+                    setLoaderShow(false);
+                    setSongsList([...data]);
+                }, 1000);
+            }
         }
-    }, [data]);
+    }, [searchButtonClicked]);
 
     return (
         <>

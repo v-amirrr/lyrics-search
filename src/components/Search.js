@@ -20,7 +20,7 @@ const Search = () => {
     const [searchInput, setSearchInput] = useState("");
     const [searchButtonClicked , setSearchButtonClicked] = useState(false);
 
-    const { data, isLoading, isSuccess } = useGetTrackQuery(searchInput, { 
+    const { data, isLoading } = useGetTrackQuery(searchInput, { 
         skip: !searchButtonClicked,
         selectFromResult: ({ data }) => ({
             data: data?.message?.body?.track_list,
@@ -30,9 +30,6 @@ const Search = () => {
     const searchButtonHandler = e => {
         e.preventDefault();
         setSearchButtonClicked(true);
-        setTimeout(() => {
-            setSearchButtonClicked(false);
-        }, 1000);
     };
 
     const clearButtonHandler = () => {
@@ -42,13 +39,13 @@ const Search = () => {
 
     useEffect(() => {
         setSearchButtonClicked(false);
-    }, []);
+    }, [data]);
 
     const searchInputRef = useRef();
 
     return (
         <>
-            <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading ? 1 : 0} clearbuttonshow={searchInput ? 1 : 0}>
+            <SearchContainer initial='hidden' animate='visible' exit='exit' variants={searchVariants} data={data || isLoading || searchButtonClicked ? 1 : 0} clearbuttonshow={searchInput ? 1 : 0}>
                 <form className='search-form'>
                     <input ref={searchInputRef} type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} placeholder="Search..." autoFocus />
                     <i className='search-form-clear-icon' onClick={clearButtonHandler}><IoClose /></i>
@@ -59,7 +56,7 @@ const Search = () => {
             {
                 data
                 &&
-                <Songs data={data} isLoading={isLoading} isSuccess={isSuccess} />
+                <Songs data={data} isLoading={isLoading} searchButtonClicked={searchButtonClicked} />
             }
         </>
     );
