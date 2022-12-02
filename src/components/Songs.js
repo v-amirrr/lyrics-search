@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import Loader from "./Loader";
 
 import styled from 'styled-components';
@@ -44,12 +46,14 @@ const Songs = ({ data, isLoading, searchButtonClicked }) => {
                             <motion.div key="songs" className='songs' initial='hidden' animate='visible' exit='exit' variants={songsVariants}>
                                 {
                                     songsList?.map(item => (
-                                        <Song key={item.track.track_id} variants={songVariants} whileTap={{ scale: 0.8 }}>
-                                            <p className='song-name'>{item.track.track_name}</p>
-                                            <p className='song-artist'>{item.track.artist_name}</p>
-                                            <p className='song-genre'>{item?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}</p>
-                                            <div className='song-hover'><p>Click For More Details</p></div>
-                                        </Song>
+                                        <Link to={`/${item.track.track_id}`}>
+                                            <Song key={item.track.track_id} variants={songVariants} whileTap={{ scale: 0.8 }}>
+                                                <p className='song-name'>{item.track.track_name}</p>
+                                                <p className='song-artist'>{item.track.artist_name}</p>
+                                                <p className='song-genre'>{item?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}</p>
+                                                <div className='song-hover'><p>Click For More Details</p></div>
+                                            </Song>
+                                        </Link>
                                     ))
                                 }
                             </motion.div>
@@ -120,6 +124,7 @@ const Song = styled(motion.div)`
     text-align: center;
     overflow: hidden;
     position: relative;
+    color: #fff;
 
     p {
         max-width: 80%;

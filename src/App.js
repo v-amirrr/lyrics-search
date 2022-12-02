@@ -4,6 +4,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 
 import HomePage from './components/HomePage';
 import WarningPopup from './components/WarningPopup';
+import SongPage from './components/SongPage';
 
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
@@ -19,6 +20,7 @@ const App = () => {
                 <WarningPopup />
                 <Routes location={location} key={location.key}>
                     <Route path="/" element={<HomePage />} />
+                    <Route path="/:id" element={<SongPage />} />
                 </Routes>
             </AnimatePresence>
         </>
