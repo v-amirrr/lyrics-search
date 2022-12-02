@@ -16,7 +16,7 @@ const App = () => {
     return (
         <>
             <Background><img src='/images/bg.jpg' alt="background" /></Background>
-            <AnimatePresence>
+            <AnimatePresence exitBeforeEnter>
                 <WarningPopup />
                 <Routes location={location} key={location.key}>
                     <Route path="/" element={<HomePage />} />

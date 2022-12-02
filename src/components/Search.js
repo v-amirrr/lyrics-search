@@ -10,9 +10,9 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const searchVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.4, type: 'tween' } },
-    exit: { opacity: 0, transition: { duration: 0.4, type: 'tween' } }
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.4, type: 'tween' } },
+    exit: { opacity: 0, scale: 0.9, transition: { duration: 0.4, type: 'tween', when: "afterChildren" } }
 };
 
 const Search = () => {

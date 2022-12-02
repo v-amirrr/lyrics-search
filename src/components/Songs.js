@@ -7,6 +7,10 @@ import Loader from "./Loader";
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const songsContainerVariants = {
+    exit: { opacity: 0, transition: { duration: 0.2, type: 'tween', when: "afterChildren" } }
+};
+
 const songsVariants = {
     visible: { transition: { staggerChildren: 0.1 } },
     exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3, type: 'tween', when: "beforeChildren" } }
@@ -36,7 +40,7 @@ const Songs = ({ data, isLoading, searchButtonClicked }) => {
 
     return (
         <>
-            <SongsContainer>
+            <SongsContainer initial='hidden' animate='visible' exit='exit' variants={songsContainerVariants}>
                     <AnimatePresence exitBeforeEnter>
                         {
                             loaderShow
@@ -46,8 +50,8 @@ const Songs = ({ data, isLoading, searchButtonClicked }) => {
                             <motion.div key="songs" className='songs' initial='hidden' animate='visible' exit='exit' variants={songsVariants}>
                                 {
                                     songsList?.map(item => (
-                                        <Link to={`/${item.track.track_id}`}>
-                                            <Song key={item.track.track_id} variants={songVariants} whileTap={{ scale: 0.8 }}>
+                                        <Link to={`/${item.track.track_id}`} key={item.track.track_id}>
+                                            <Song variants={songVariants} whileTap={{ scale: 0.8 }}>
                                                 <p className='song-name'>{item.track.track_name}</p>
                                                 <p className='song-artist'>{item.track.artist_name}</p>
                                                 <p className='song-genre'>{item?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}</p>
