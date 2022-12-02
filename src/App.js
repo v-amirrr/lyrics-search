@@ -6,6 +6,8 @@ import HomePage from './components/HomePage';
 import WarningPopup from './components/WarningPopup';
 import SongPage from './components/SongPage';
 
+import backgroundImage from "./assets/images/bg.jpg";
+
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 
@@ -15,7 +17,7 @@ const App = () => {
 
     return (
         <>
-            <Background><img src='/images/bg.jpg' alt="background" /></Background>
+            <Background><img src={backgroundImage} alt="background" /></Background>
             <AnimatePresence exitBeforeEnter>
                 <WarningPopup />
                 <Routes location={location} key={location.key}>
