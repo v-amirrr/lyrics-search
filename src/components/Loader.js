@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import "./Loader.scss";
 import { motion } from 'framer-motion';
 
 const loaderVariants = {
@@ -12,50 +12,15 @@ const loaderVariants = {
 const Loader = () => {
     return (
         <>
-            <LoaderContainer initial='hidden' animate='visible' exit='exit' variants={loaderVariants}>
-                <div className="loader">
-                    <div className="line"></div>
-                    <div className="line"></div>
-                    <div className="line"></div>
+            <motion.div className='loader' initial='hidden' animate='visible' exit='exit' variants={loaderVariants}>
+                <div className="loader__container">
+                    <div className="loader__container__line"></div>
+                    <div className="loader__container__line"></div>
+                    <div className="loader__container__line"></div>
                 </div>
-            </LoaderContainer>
+            </motion.div>
         </>
     );
 };
-
-const LoaderContainer = styled(motion.section)`
-    margin: 2rem;
-    padding: 2rem;
-
-    .line {
-        display: inline-block;
-        width: 1rem;
-        height: 1rem;
-        border-radius: 15px;
-        background-color: #fff;
-    }
-
-    .loader .line:nth-last-child(1) {
-        animation: loadingB 1.5s 1s infinite;
-    }
-    .loader .line:nth-last-child(2) {
-        animation: loadingB 1.5s 0.5s infinite;
-    }
-    .loader .line:nth-last-child(3) {
-        animation: loadingB 1.5s 0s infinite;
-    }
-
-    @keyframes loadingB {
-        0% {
-            width: 1rem;
-        }
-        50% {
-            width: 2rem;
-        }
-        100% {
-            width: 1rem;
-        }
-    }
-`;
 
 export default Loader;

@@ -1,0 +1,36 @@
+.loader {
+    margin: 2rem;
+    padding: 2rem;
+
+    &__container__line {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 15px;
+        background-color: #fff;
+
+        &:nth-last-child(1) {
+            animation: loadingB 1.5s 1s infinite;
+        }
+    
+        &:nth-last-child(2) {
+            animation: loadingB 1.5s 0.5s infinite;
+        }
+    
+        &:nth-last-child(3) {
+            animation: loadingB 1.5s 0s infinite;
+        }
+    }
+}
+
+@keyframes loadingB {
+    0% {
+        width: 1rem;
+    }
+    50% {
+        width: 2rem;
+    }
+    100% {
+        width: 1rem;
+    }
+}
