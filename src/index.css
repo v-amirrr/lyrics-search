@@ -47,10 +47,6 @@ body {
     cursor: pointer;
 }
 
-::placeholder {
-    text-transform: capitalize;
-}
-
 .link {
     position: relative;
     padding: .1rem;

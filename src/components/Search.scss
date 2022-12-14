@@ -1,0 +1,97 @@
+.search {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__form {
+        position: relative;
+        border-radius: 50px;
+        font-family: 'Outfit', sans-serif;
+        background-color: #ffffff08;
+        box-shadow: #0000001a 0px 4px 12px;
+        width: 22rem;
+        height: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__input {
+            all: unset;
+            position: absolute;
+            left: 1rem;
+            font-size: 1rem;
+            font-weight: 200;
+        }
+
+        &__clear-icon--show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            right: 5.2rem;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transform: scale(1);
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+            transition: transform .3s;
+            -webkit-transition: transform .3s;
+            -moz-transition: transform .3s;
+            -ms-transition: transform .3s;
+            -o-transition: transform .3s;
+        }
+
+        &__clear-icon--hide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            right: 5.2rem;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transform: scale(0);
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -ms-transform: scale(0);
+            -o-transform: scale(0);
+            transition: transform .3s;
+            -webkit-transition: transform .3s;
+            -moz-transition: transform .3s;
+            -ms-transition: transform .3s;
+            -o-transition: transform .3s;
+        }
+
+        &__submit-btn {
+            all: unset;
+            position: absolute;
+            right: 0;
+            border-left: 1.3px solid #ffffff22;
+            border-radius: 0 50px 50px 0;
+            cursor: pointer;
+            user-select: none;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background .2s;
+            height: 2.5rem;
+            width: 5rem;
+
+            &:hover {
+                background-color: #ffffff15;
+            }
+
+            &:active {
+                background-color: #ffffff22;
+            }
+        }
+    }
+}
