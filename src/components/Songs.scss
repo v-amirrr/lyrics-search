@@ -1,0 +1,126 @@
+.songs-section {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85vh;
+    user-select: none;
+    position: absolute;
+    bottom: 0;
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: .3rem;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #ffffff05;
+        border-radius: 50px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        -ms-border-radius: 50px;
+        -o-border-radius: 50px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #ffffff22;
+        border-radius: 50px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        -ms-border-radius: 50px;
+        -o-border-radius: 50px;
+    }
+    
+    &__songs-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 50rem;
+        height: 100%;
+        overflow: hidden scroll;
+
+        &__song {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 12rem;
+            height: 8rem;
+            border-radius: 15px;
+            box-shadow: #0000001a 0px 6px 12px;
+            cursor: pointer;
+            background-color: #ffffff08;
+            margin: .5rem;
+            font-family: 'Outfit', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            color: #fff;
+
+            p {
+                max-width: 80%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                margin: .1rem 0;
+            }
+
+            &__name {
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+            &__artist {
+                font-size: .8rem;
+                font-weight: 300;
+            }
+
+            &__genre {
+                font-size: .5rem;
+                font-weight: 300;
+            }
+
+            &__click-text {
+                font-weight: 500;
+                font-size: .5rem;
+                width: 100%;
+                height: 1.5rem;
+                position: absolute;
+                bottom: 0;
+                opacity: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #ffffff10;
+                transition: opacity .3s, bottom .3s, background .3s;
+            }
+        }
+    }
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 745px) {
+    .songs-section__songs-container__song__click-text {
+        bottom: -1rem;
+        opacity: 0;
+
+        &:hover {
+            background-color: #ffffff22;
+        }
+    }
+
+    .songs-section__songs-container__song {
+        &:hover {
+            .songs-section__songs-container__song__click-text {
+                bottom: 0;
+                opacity: 1;
+            }
+        }
+    }
+}
