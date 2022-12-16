@@ -43,7 +43,7 @@ const Songs = () => {
             if (!loading) {
                 setTimeout(() => {
                     setLoaderShow(false);
-                }, 1000);
+                }, 500);
             }
         }
     }, [searchInput]);
