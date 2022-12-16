@@ -63,7 +63,7 @@ const Search = () => {
                         placeholder="Search Song..." 
                         autoFocus
                     />
-                    <i className={searchInput ? 'search__form__clear-icon--show' : 'search__form__clear-icon--hide'} onClick={clearButtonHandler}><IoClose /></i>
+                    <i className={inputText ? 'search__form__clear-icon--show' : 'search__form__clear-icon--hide'} onClick={clearButtonHandler}><IoClose /></i>
                     <button className='search__form__submit-btn' type='submit' onClick={searchSubmitHandler}>search</button>
                 </form>
             </motion.div>
