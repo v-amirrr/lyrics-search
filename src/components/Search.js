@@ -1,4 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearch } from "../redux/searchSlice";
+
+import { useGetTrackQuery } from '../redux/apiSlice';
 
 import { IoClose } from 'react-icons/io5';
 
@@ -13,30 +18,53 @@ const searchVariants = {
 
 const Search = () => {
 
-    const [searchInput, setSearchInput] = useState("");
+    const dispatch = useDispatch();
+
+    const [inputText, setInputText] = useState("");
+    const [searchButtonClicked , setSearchButtonClicked] = useState(false);
+
+    const searchInput = useSelector(state => state.searchStore.searchInputText);
 
     const searchInputRef = useRef();
 
     const clearButtonHandler = () => {
-        setSearchInput("");
+        setInputText("");
         searchInputRef.current.focus();
     };
 
+    const searchSubmitHandler = e => {
+        e.preventDefault();
+        setSearchButtonClicked(true);
+        dispatch(setSearch(inputText));
+    };
+
+    const { data } = useGetTrackQuery(searchInput, { 
+        skip: !searchButtonClicked
+    });
+
+    useEffect(() => {
+        setSearchButtonClicked(false);
+    }, [data]);
+
+    useEffect(() => {
+        setInputText(searchInput);
+    }, []);
+
     return (
         <>
-            <motion.div className='search' initial='hidden' animate='visible' exit='exit' variants={searchVariants}>
+            <motion.div className={searchInput || searchButtonClicked ? 'search search--half' : 'search search--full'} initial='hidden' animate='visible' exit='exit' variants={searchVariants}>
                 <form className='search__form'>
                     <input
                         className='search__form__input'
                         type="text" 
-                        value={searchInput} 
-                        onChange={e => setSearchInput(e.target.value)} 
+                        value={inputText} 
+                        onChange={e => setInputText(e.target.value)} 
                         ref={searchInputRef} 
                         placeholder="Search Song..." 
                         autoFocus
                     />
                     <i className={searchInput ? 'search__form__clear-icon--show' : 'search__form__clear-icon--hide'} onClick={clearButtonHandler}><IoClose /></i>
-                    <button className='search__form__submit-btn' type='submit'>search</button>
+                    <button className='search__form__submit-btn' type='submit' onClick={searchSubmitHandler}>search</button>
                 </form>
             </motion.div>
         </>

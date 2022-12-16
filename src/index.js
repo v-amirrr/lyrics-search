@@ -7,14 +7,15 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from "./App";
 
-import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
-import apiSlice from './redux/apiSlice';
+import { Provider } from 'react-redux';
+
+import { store } from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <ApiProvider api={apiSlice}>
+    <Provider store={store}>
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    </ApiProvider>
+    </Provider>
 );

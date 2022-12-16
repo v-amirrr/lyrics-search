@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
+
+import { useGetTrackQuery } from '../redux/apiSlice';
+
 import Loader from "./Loader";
 
 import styled from 'styled-components';
@@ -21,22 +25,28 @@ const songVariants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, type: 'tween' } },
 };
 
-const Songs = ({ data, isLoading, searchButtonClicked }) => {
+const Songs = () => {
 
     const [loaderShow, setLoaderShow] = useState(true);
-    const [songsList, setSongsList] = useState([...data]);
+
+    const searchInput = useSelector(state => state.searchStore.searchInputText);
+
+    const { data: songsList, loading } = useGetTrackQuery(searchInput, {
+        selectFromResult: ({ data }) => ({
+            data: data?.message?.body?.track_list,
+        }),
+    });
 
     useEffect(() => {
-        if (searchButtonClicked) {
+        if (searchInput) {
             setLoaderShow(true);
-            if (!isLoading) {
+            if (!loading) {
                 setTimeout(() => {
                     setLoaderShow(false);
-                    setSongsList([...data]);
                 }, 1000);
             }
         }
-    }, [searchButtonClicked]);
+    }, [searchInput]);
 
     return (
         <>
@@ -77,8 +87,10 @@ const SongsContainer = styled(motion.section)`
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 80%;
+    height: 80vh;
     user-select: none;
+    position: absolute;
+    bottom: 0;
 
     .songs {
         display: flex;
