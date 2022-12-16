@@ -1,5 +1,4 @@
 .search {
-    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +8,7 @@
     -moz-transition: height .3s;
     -ms-transition: height .3s;
     -o-transition: height .3s;
-    
+
     &__form {
         position: relative;
         border-radius: 50px;
@@ -25,7 +24,7 @@
         &__input {
             all: unset;
             position: absolute;
-            left: 1rem;
+            left: .8rem;
             font-size: 1rem;
             font-weight: 200;
         }
@@ -35,7 +34,7 @@
             justify-content: center;
             align-items: center;
             position: absolute;
-            right: 5.2rem;
+            right: 5.5rem;
             font-size: 1.3rem;
             cursor: pointer;
             transform: scale(1);
@@ -55,7 +54,7 @@
             justify-content: center;
             align-items: center;
             position: absolute;
-            right: 5.2rem;
+            right: 5.5rem;
             font-size: 1.3rem;
             cursor: pointer;
             transform: scale(0);
