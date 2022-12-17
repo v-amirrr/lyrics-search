@@ -36,6 +36,36 @@
         -ms-border-radius: 50px;
         -o-border-radius: 50px;
     }
+
+    &__error-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 30rem;
+        padding: 2rem;
+        text-align: center;
+        border-radius: 15px;
+        box-shadow: #0000001a 0px 6px 12px;
+        background-color: #ffffff08;
+        backdrop-filter: blur(10px) saturate(100%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        
+        &__icon {
+            letter-spacing: -10px;
+            font-size: 1.5rem;
+        }
+        
+        &__error {
+            font-size: 1rem;
+            margin: .5rem 0;
+        }
+        
+        &__warning {
+            font-size: .8rem;
+            color: #ff0000;
+        }
+    }
     
     &__songs-container {
         display: flex;
