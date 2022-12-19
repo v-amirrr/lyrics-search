@@ -93,6 +93,11 @@
             overflow: hidden;
             position: relative;
             color: #fff;
+            transition: background .3s;
+            -webkit-transition: background .3s;
+            -moz-transition: background .3s;
+            -ms-transition: background .3s;
+            -o-transition: background .3s;
 
             p {
                 max-width: 80%;
@@ -197,6 +202,8 @@
                 bottom: 0;
                 opacity: 1;
             }
+
+            background-color: #ffffff11;
         }
     }
 }
