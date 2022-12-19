@@ -131,6 +131,33 @@
                 background-color: #ffffff10;
                 transition: opacity .3s, bottom .3s, background .3s;
             }
+
+            &__icons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin: .4rem;
+
+                span {
+                    font-size: .5rem;
+                    font-weight: 900;
+                    width: .8rem;
+                    height: .8rem;
+                    background-color: #00000055;
+                    margin: 0 .05rem;
+                    border-radius: 6px;
+                    -webkit-border-radius: 6px;
+                    -moz-border-radius: 6px;
+                    -ms-border-radius: 6px;
+                    -o-border-radius: 6px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
         }
     }
 }
