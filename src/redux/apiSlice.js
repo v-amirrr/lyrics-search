@@ -7,9 +7,12 @@ const apiSlice = createApi({
         getTrack: builder.query({
             query: (songName) => ({ url: `track.search?q_track=${songName}&apikey=${process.env.REACT_APP_API_KEY}` }),
         }),
+        getLyrics: builder.query({
+            query: (songId) => ({ url: `track.lyrics.get?track_id=${songId}&apikey=${process.env.REACT_APP_API_KEY}` }),
+        }),
     }),
 });
 
-export const { useGetTrackQuery } = apiSlice;
+export const { useGetTrackQuery, useGetLyricsQuery } = apiSlice;
 
 export default apiSlice;

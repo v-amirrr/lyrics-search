@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useLocation, useParams } from 'react-router-dom';
 
+import { useGetLyricsQuery } from '../redux/apiSlice';
+
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
@@ -18,6 +20,10 @@ const SongPage = () => {
     const location = useLocation();
     const { album_name, artist_name, explicit, has_lyrics, primary_genres, track_name } = location.state;
 
+    const { data: TrackLyrics } = useGetLyricsQuery(id, {
+        skip: !has_lyrics
+    });
+    
     return (
         <>
             <SongPageContainer initial='hidden' animate='visible' exit='exit' variants={songPageVariants}>
@@ -27,6 +33,7 @@ const SongPage = () => {
                 <p>{has_lyrics}</p>
                 <p>{primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}</p>
                 <p>{track_name}</p>
+                <p>{TrackLyrics?.message?.body?.lyrics?.lyrics_body}</p>
             </SongPageContainer>
         </>
     );
