@@ -72,7 +72,7 @@ const Songs = () => {
                             :
                             <motion.div key="songs" className='songs-section__songs-container' initial='hidden' animate='visible' exit='exit' variants={songsVariants}>
                                 {songsList?.message?.body?.track_list?.map(item => (
-                                    <Link to={`/${item.track.track_id}`} key={item.track.track_id}>
+                                    <Link to={`/${item.track.track_id}`} key={item.track.track_id} state={item.track}>
                                         <motion.div className='songs-section__songs-container__song' variants={songVariants} whileTap={{ scale: 0.8 }}>
                                             <div className='songs-section__songs-container__song__icons'>
                                                 {item.track.explicit ? <span>E</span> : ""}
@@ -80,7 +80,7 @@ const Songs = () => {
                                             </div>
                                             <p className='songs-section__songs-container__song__name'>{item.track.track_name}</p>
                                             <p className='songs-section__songs-container__song__artist'>{item.track.artist_name}</p>
-                                            <p className='songs-section__songs-container__song__genre'>{item?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}</p>
+                                            <p className='songs-section__songs-container__song__genre'>{item.track.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}</p>
                                             <div className='songs-section__songs-container__song__click-text'><p>Click For More Details</p></div>
                                         </motion.div>
                                     </Link>
