@@ -33,9 +33,9 @@ const Background = styled.div`
     position: absolute;
     inset: 0 0 0 0;
     z-index: -9;
-    
+
     img {
-        filter: blur(5px);
+        filter: blur(8px);
         width: 100%;
         height: 100%;
         z-index: -10;

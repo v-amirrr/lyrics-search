@@ -17,8 +17,8 @@ const songsContainerVariants = {
 
 const errorVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: [0.8, 1.1, 1], transition: { duration: 0.3, type: 'tween', staggerChildren: 0.1 } },
-    exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3, type: 'tween', when: "beforeChildren" } }
+    visible: { opacity: 1, scale: [0.8, 1.05, 1], transition: { duration: 0.4, type: 'tween' } },
+    exit: { opacity: 0, scale: 0.8, transition: { duration: 0.4, type: 'tween' } }
 };
 
 const songsVariants = {
@@ -66,8 +66,8 @@ const Songs = () => {
                             ?
                             <motion.div key="error" className='songs-section__error-container' initial='hidden' animate='visible' exit='exit' variants={errorVariants}>
                                 <p className='songs-section__error-container__icon'>╯︿╰</p>
-                                <p className='songs-section__error-container__error'>Looks like we have a problem.<br />Please check you connection status and try again.</p>
-                                <p className='songs-section__error-container__warning'>If you're in sanctioned countries like <b>Iran</b>, you have to turn on your <b>VPN</b> for using the app. If you're alredy using a VPN, clearly it's not working so please use another one.<br />{":("}</p>
+                                <p className='songs-section__error-container__error'>Looks like we have a problem.<br />Please check your connection status and try again.</p>
+                                <p className='songs-section__error-container__warning'>If you're in sanctioned countries like <b>Iran</b>, you have to turn on your <b>VPN</b> for using the app. If you're already using a VPN, clearly it's not working so please use another one.<br />{":("}</p>
                             </motion.div>
                             :
                             <motion.div key="songs" className='songs-section__songs-container' initial='hidden' animate='visible' exit='exit' variants={songsVariants}>
