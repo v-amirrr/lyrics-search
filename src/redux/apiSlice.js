@@ -8,11 +8,14 @@ const apiSlice = createApi({
             query: (songName) => ({ url: `track.search?q_track=${songName}&apikey=${process.env.REACT_APP_API_KEY}` }),
         }),
         getLyrics: builder.query({
-            query: (songId) => ({ url: `track.lyrics.get?track_id=${songId}&apikey=${process.env.REACT_APP_API_KEY}` }),
+            query: (songId) => ({ url: `track.lyrics.get?commontrack_id=${songId}&apikey=${process.env.REACT_APP_API_KEY}` }),
+        }),
+        getTrack: builder.query({
+            query: (songId) => ({ url: `track.get?commontrack_id=${songId}&apikey=${process.env.REACT_APP_API_KEY}` }),
         }),
     }),
 });
 
-export const { useGetSearchTracksQuery, useGetLyricsQuery } = apiSlice;
+export const { useGetSearchTracksQuery, useGetLyricsQuery, useGetTrackQuery } = apiSlice;
 
 export default apiSlice;
