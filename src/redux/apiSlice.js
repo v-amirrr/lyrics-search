@@ -4,7 +4,7 @@ const apiSlice = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://api.musixmatch.com/ws/1.1/' }),
     endpoints: (builder) => ({
-        getTrack: builder.query({
+        getSearchTracks: builder.query({
             query: (songName) => ({ url: `track.search?q_track=${songName}&apikey=${process.env.REACT_APP_API_KEY}` }),
         }),
         getLyrics: builder.query({
@@ -13,6 +13,6 @@ const apiSlice = createApi({
     }),
 });
 
-export const { useGetTrackQuery, useGetLyricsQuery } = apiSlice;
+export const { useGetSearchTracksQuery, useGetLyricsQuery } = apiSlice;
 
 export default apiSlice;

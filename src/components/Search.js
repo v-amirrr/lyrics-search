@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearch } from "../redux/searchSlice";
 
-import { useGetTrackQuery } from '../redux/apiSlice';
+import { useGetSearchTracksQuery } from '../redux/apiSlice';
 
 import { IoClose } from 'react-icons/io5';
 
@@ -38,7 +38,7 @@ const Search = () => {
         dispatch(setSearch(inputText));
     };
 
-    const { data } = useGetTrackQuery(searchInput, { 
+    const { data } = useGetSearchTracksQuery(searchInput, { 
         skip: !searchButtonClicked
     });
 

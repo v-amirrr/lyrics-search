@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
-import { useGetTrackQuery } from '../redux/apiSlice';
+import { useGetSearchTracksQuery } from '../redux/apiSlice';
 
 import Loader from "./Loader";
 
@@ -37,7 +37,7 @@ const Songs = () => {
 
     const searchInput = useSelector(state => state.searchStore.searchInputText);
 
-    const { data: songsList, isLoading, isError } = useGetTrackQuery(searchInput);
+    const { data: songsList, isLoading, isError } = useGetSearchTracksQuery(searchInput);
 
     useEffect(() => {
         setLoaderShow(true);
