@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, Link } from 'react-router-dom';
 
 import { useGetLyricsQuery, useGetTrackQuery } from '../redux/apiSlice';
 
+import { IoMdArrowRoundBack } from 'react-icons/io';
 import "./SongPage.scss";
 import { motion } from 'framer-motion';
 
@@ -50,6 +51,13 @@ const SongPage = () => {
                         {trackData?.message?.body?.track?.explicit ? <span>E</span> : ""}
                         {trackData?.message?.body?.track?.has_lyrics ? <span>L</span> : ""}
                     </div>
+
+                    <Link to="/">
+                        <motion.div className='song-page__song-container__back-btn' whileTap={{ scale: 0.8 }}>
+                            <i><IoMdArrowRoundBack /></i>
+                            <p>Back To Home</p>
+                        </motion.div>
+                    </Link>
                 </div>
             </motion.section>
         </>
