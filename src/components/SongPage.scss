@@ -77,7 +77,8 @@
 
             &__lyrics--close {
                 width: 15rem;
-                height: 2rem;
+                max-height: 15rem;
+                padding: .5rem;
                 background-color: #ffffff11;
                 border-radius: 6px;
                 -webkit-border-radius: 6px;
@@ -103,6 +104,16 @@
                     align-items: center;
                     font-weight: 500;
                     color: #999;
+                    padding: 0;
+                    transition: padding .3s, color .3s;
+                    -webkit-transition: padding .3s, color .3s;
+                    -moz-transition: padding .3s, color .3s;
+                    -ms-transition: padding .3s, color .3s;
+                    -o-transition: padding .3s, color .3s;
+
+                    &:hover {
+                        color: #fff;
+                    }
 
                     input {
                         cursor: pointer;
@@ -152,7 +163,7 @@
 
             &__lyrics--open {
                 width: 20rem;
-                height: 15rem;
+                max-height: 15rem;                
                 padding: .5rem;
                 background-color: #ffffff11;
                 border-radius: 6px;
@@ -179,6 +190,16 @@
                     align-items: center;
                     font-weight: 500;
                     color: #999;
+                    padding: 1rem 0 0 0;
+                    transition: padding .3s, color .3s;
+                    -webkit-transition: padding .3s, color .3s;
+                    -moz-transition: padding .3s, color .3s;
+                    -ms-transition: padding .3s, color .3s;
+                    -o-transition: padding .3s, color .3s;
+
+                    &:hover {
+                        color: #fff;
+                    }
                     
                     input {
                         cursor: pointer;

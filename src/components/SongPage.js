@@ -45,14 +45,16 @@ const SongPage = () => {
                         <p className='song-page__song-container__song-data__genre'>
                             {trackData?.message?.body?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}
                         </p>
-                        <div className={inputCheckbox ? 'song-page__song-container__song-data__lyrics--open' : 'song-page__song-container__song-data__lyrics--close' }>
+                        <div className={inputCheckbox ? 'song-page__song-container__song-data__lyrics--open' : 'song-page__song-container__song-data__lyrics--close'}>
                             <div>
                                 Song Lyrics
                                 <input type="checkbox" onChange={() => setInputCheckbox(!inputCheckbox)} checked={inputCheckbox}/>
                                 <i><IoChevronDown /></i>
                             </div>
                             <div>
-                                {trackLyrics?.message?.body?.lyrics?.lyrics_body}
+                                {trackData?.message?.body?.track?.has_lyrics ?
+                                trackLyrics?.message?.body?.lyrics?.lyrics_body :
+                                "There is no lyrics avaible for this song."}
                             </div>
                         </div>
                     </div>
