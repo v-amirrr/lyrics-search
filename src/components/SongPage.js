@@ -4,7 +4,7 @@ import { useLocation, useParams } from 'react-router-dom';
 
 import { useGetLyricsQuery, useGetTrackQuery } from '../redux/apiSlice';
 
-import styled from 'styled-components';
+import "./SongPage.scss";
 import { motion } from 'framer-motion';
 
 const songPageVariants = {
@@ -26,20 +26,16 @@ const SongPage = () => {
 
     return (
         <>
-            <SongPageContainer initial='hidden' animate='visible' exit='exit' variants={songPageVariants}>
-                {id}
-            </SongPageContainer>
+            <motion.section className='song-page' initial='hidden' animate='visible' exit='exit' variants={songPageVariants}>
+                <div className='song-page__song-container'>
+                    <div className='song-page__song-container__icons'>
+                        {trackData?.message?.body?.track?.explicit ? <span>E</span> : ""}
+                        {trackData?.message?.body?.track?.has_lyrics ? <span>L</span> : ""}
+                    </div>
+                </div>
+            </motion.section>
         </>
     );
 };
-
-const SongPageContainer = styled(motion.section)`
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #00000011;
-`;
 
 export default SongPage;
