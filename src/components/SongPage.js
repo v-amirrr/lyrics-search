@@ -28,6 +28,24 @@ const SongPage = () => {
         <>
             <motion.section className='song-page' initial='hidden' animate='visible' exit='exit' variants={songPageVariants}>
                 <div className='song-page__song-container'>
+                    <div className='song-page__song-container__song-data'>
+                        <p className='song-page__song-container__song-data__track'>
+                            {trackData?.message?.body?.track?.track_name}
+                        </p>
+                        <p className='song-page__song-container__song-data__artist'>
+                            {trackData?.message?.body?.track?.artist_name}
+                        </p>
+                        <p className='song-page__song-container__song-data__album'>
+                            {trackData?.message?.body?.track?.album_name}
+                        </p>
+                        <p className='song-page__song-container__song-data__genre'>
+                            {trackData?.message?.body?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}
+                        </p>
+                        <a className="song-page__song-container__song-data__link link" href={trackData?.message?.body?.track?.track_share_url} target="_blank" rel="noopener noreferror">
+                            Musixmatch Link
+                        </a>
+                    </div>
+
                     <div className='song-page__song-container__icons'>
                         {trackData?.message?.body?.track?.explicit ? <span>E</span> : ""}
                         {trackData?.message?.body?.track?.has_lyrics ? <span>L</span> : ""}

@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #00000011;
+    background-color: #00000055;
 
     &__song-container {
         display: flex;
@@ -38,6 +38,45 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+            }
+        }
+
+        &__song-data {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            height: 10rem;
+
+            &__track {
+                font-size: 2rem;
+                font-weight: 900;
+                color: #eee;
+            }
+
+            &__artist {
+                font-size: 1rem;
+                font-weight: 600;
+                color: #ccc;
+            }
+
+            &__album {
+                font-size: .8rem;
+                font-weight: 500;
+                color: #aaa;
+            }
+
+            &__genre {
+                font-size: .6rem;
+                font-weight: 500;
+                color: #aaa;
+            }
+
+            &__link {
+                position: absolute;
+                bottom: .5rem;
+                font-size: .8rem;
+                font-weight: 600;
             }
         }
     }
