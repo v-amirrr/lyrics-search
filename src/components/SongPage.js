@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useLocation, useParams, Link } from 'react-router-dom';
 
 import { useGetLyricsQuery, useGetTrackQuery } from '../redux/apiSlice';
 
 import { IoMdArrowRoundBack } from 'react-icons/io';
+import { IoChevronDown } from 'react-icons/io5';
 import "./SongPage.scss";
 import { motion } from 'framer-motion';
 
@@ -25,6 +26,8 @@ const SongPage = () => {
         skip: !location.state
     });
 
+    const [inputCheckbox, setInputCheckbox] = useState(false);
+
     return (
         <>
             <motion.section className='song-page' initial='hidden' animate='visible' exit='exit' variants={songPageVariants}>
@@ -42,10 +45,21 @@ const SongPage = () => {
                         <p className='song-page__song-container__song-data__genre'>
                             {trackData?.message?.body?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}
                         </p>
-                        <a className="song-page__song-container__song-data__link link" href={trackData?.message?.body?.track?.track_share_url} target="_blank" rel="noopener noreferror">
-                            Musixmatch Link
-                        </a>
+                        <div className={inputCheckbox ? 'song-page__song-container__song-data__lyrics--open' : 'song-page__song-container__song-data__lyrics--close' }>
+                            <div>
+                                Song Lyrics
+                                <input type="checkbox" onChange={() => setInputCheckbox(!inputCheckbox)} checked={inputCheckbox}/>
+                                <i><IoChevronDown /></i>
+                            </div>
+                            <div>
+                                {trackLyrics?.message?.body?.lyrics?.lyrics_body}
+                            </div>
+                        </div>
                     </div>
+
+                    <a className="song-page__song-container__song-link link" href={trackData?.message?.body?.track?.track_share_url} target="_blank" rel="noopener noreferror">
+                        Musixmatch Link
+                    </a>
 
                     <div className='song-page__song-container__icons'>
                         {trackData?.message?.body?.track?.explicit ? <span>E</span> : ""}
