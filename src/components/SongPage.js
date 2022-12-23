@@ -102,7 +102,7 @@ const SongPage = () => {
                         </motion.div>
 
                         <Link to="/">
-                            <motion.div className='song-page__song-container__back-btn' whileTap={{ scale: 0.8 }} variants={songPageItemVariants}>
+                            <motion.div className='song-page__song-container__back-btn' variants={songPageItemVariants}>
                                 <i><IoMdArrowRoundBack /></i>
                                 <p>Back To Home</p>
                             </motion.div>
