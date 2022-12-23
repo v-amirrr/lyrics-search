@@ -58,18 +58,13 @@ const Songs = () => {
         <>
             <motion.section className='songs-section' initial='hidden' animate='visible' exit='exit' variants={songsContainerVariants}>
                     <AnimatePresence exitBeforeEnter>
-                        {loaderShow && !isError
-                        ?
-                        <Loader key="loader"/>
-                        :
-                            isError
-                            ?
+                        {loaderShow && !isError ?
+                        <Loader key="loader"/> :
+                            isError ?
                             <motion.div key="error" className='songs-section__error-container' initial='hidden' animate='visible' exit='exit' variants={errorVariants}>
-                                <p className='songs-section__error-container__icon'>╯︿╰</p>
                                 <p className='songs-section__error-container__error'>Looks like we have a problem.<br />Please check your connection status and try again.</p>
-                                <p className='songs-section__error-container__warning'>If you're in sanctioned countries like <b>Iran</b>, you have to turn on your <b>VPN</b> for using the app. If you're already using a VPN, clearly it's not working so please use another one.<br />{":("}</p>
-                            </motion.div>
-                            :
+                                <p className='songs-section__error-container__warning'>If you're in sanctioned countries like <b>Iran</b>, you have to turn on your <b>VPN</b> for using the app. If you're already using a VPN, clearly it's not working so please use another one.</p>
+                            </motion.div> :
                             <motion.div key="songs" className='songs-section__songs-container' initial='hidden' animate='visible' exit='exit' variants={songsVariants}>
                                 {songsList?.message?.body?.track_list?.map(item => (
                                     <Link to={`/${item.track.commontrack_id}`} key={item.track.commontrack_id} state={item.track.has_lyrics}>

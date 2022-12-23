@@ -51,14 +51,6 @@
         backdrop-filter: blur(10px) saturate(100%);
         -webkit-backdrop-filter: blur(16px) saturate(180%);
         
-        &__icon {
-            letter-spacing: -10px;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #ff0000;
-            text-shadow: #00000044 0px 6px 12px;
-        }
-        
         &__error {
             font-size: 1.2rem;
             font-weight: 900;
