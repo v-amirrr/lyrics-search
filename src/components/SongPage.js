@@ -12,8 +12,8 @@ import "./SongPage.scss";
 import { motion, AnimatePresence } from 'framer-motion';
 
 const songPageVariants = {
-    hidden: { opacity: 0, y: -50, scale: 0.9 },
-    visible: { opacity: 1, y: 0, scale: [1, 0.9, 1], transition: { duration: 0.4, type: 'tween' } },
+    hidden: { opacity: 0},
+    visible: { opacity: 1, transition: { duration: 0.4, type: 'tween' } },
     exit: { opacity: 0, transition: { duration: 0.4, type: 'tween' } }
 };
 
