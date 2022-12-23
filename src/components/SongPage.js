@@ -12,9 +12,21 @@ import "./SongPage.scss";
 import { motion, AnimatePresence } from 'framer-motion';
 
 const songPageVariants = {
-    hidden: { opacity: 0},
+    hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.4, type: 'tween' } },
     exit: { opacity: 0, transition: { duration: 0.4, type: 'tween' } }
+};
+
+const songPageContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0, type: 'tween', staggerChildren: 0.05, when: "beforeChildren" } },
+    exit: { opacity: 0, transition: { duration: 0.1, type: 'tween', staggerChildren: 0.03, when: "afterChildren" } }
+};
+
+const songPageItemVariants = {
+    hidden: { opacity: 0, y: -30, scale: 0.8 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, type: 'tween' } },
+    exit: { opacity: 0, y: 20, scale: 0.8, transition: { duration: 0.4, type: 'tween' } }
 };
 
 const SongPage = () => {
@@ -52,21 +64,21 @@ const SongPage = () => {
                 <AnimatePresence exitBeforeEnter>
                     {loaderShow ?
                     <Loader key="loader-song-page" /> :
-                    <div className='song-page__song-container'>
+                    <motion.div className='song-page__song-container' variants={songPageContainerVariants}>
                         <div className='song-page__song-container__song-data'>
-                            <p className='song-page__song-container__song-data__track'>
+                            <motion.p className='song-page__song-container__song-data__track' variants={songPageItemVariants}>
                                 {trackData?.message?.body?.track?.track_name}
-                            </p>
-                            <p className='song-page__song-container__song-data__artist'>
+                            </motion.p>
+                            <motion.p className='song-page__song-container__song-data__artist' variants={songPageItemVariants}>
                                 {trackData?.message?.body?.track?.artist_name}
-                            </p>
-                            <p className='song-page__song-container__song-data__album'>
+                            </motion.p>
+                            <motion.p className='song-page__song-container__song-data__album' variants={songPageItemVariants}>
                                 {trackData?.message?.body?.track?.album_name}
-                            </p>
-                            <p className='song-page__song-container__song-data__genre'>
+                            </motion.p>
+                            <motion.p className='song-page__song-container__song-data__genre' variants={songPageItemVariants}>
                                 {trackData?.message?.body?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}
-                            </p>
-                            <div className={inputCheckbox ? 'song-page__song-container__song-data__lyrics--open' : 'song-page__song-container__song-data__lyrics--close'}>
+                            </motion.p>
+                            <motion.div className={inputCheckbox ? 'song-page__song-container__song-data__lyrics--open' : 'song-page__song-container__song-data__lyrics--close'} variants={songPageItemVariants}>
                                 <div>
                                     Song Lyrics
                                     <input type="checkbox" onChange={() => setInputCheckbox(!inputCheckbox)} checked={inputCheckbox}/>
@@ -77,25 +89,25 @@ const SongPage = () => {
                                     trackLyrics?.message?.body?.lyrics?.lyrics_body :
                                     "There is no lyrics avaible for this song."}
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
 
-                        <a className="song-page__song-container__song-link link" href={trackData?.message?.body?.track?.track_share_url} target="_blank" rel="noopener noreferror">
+                        <motion.a className="song-page__song-container__song-link link" href={trackData?.message?.body?.track?.track_share_url} target="_blank" rel="noopener noreferror" variants={songPageItemVariants}>
                             Musixmatch Link
-                        </a>
+                        </motion.a>
 
-                        <div className='song-page__song-container__icons'>
+                        <motion.div className='song-page__song-container__icons' variants={songPageItemVariants}>
                             {trackData?.message?.body?.track?.explicit ? <span>E</span> : ""}
                             {trackData?.message?.body?.track?.has_lyrics ? <span>L</span> : ""}
-                        </div>
+                        </motion.div>
 
                         <Link to="/">
-                            <motion.div className='song-page__song-container__back-btn' whileTap={{ scale: 0.8 }}>
+                            <motion.div className='song-page__song-container__back-btn' whileTap={{ scale: 0.8 }} variants={songPageItemVariants}>
                                 <i><IoMdArrowRoundBack /></i>
                                 <p>Back To Home</p>
                             </motion.div>
                         </Link>
-                    </div>}
+                    </motion.div>}
                 </AnimatePresence>
             </motion.section>
         </>
