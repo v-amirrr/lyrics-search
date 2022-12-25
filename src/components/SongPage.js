@@ -21,13 +21,13 @@ const songPageVariants = {
 const songPageContainerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0, type: 'tween', staggerChildren: 0.05, when: "beforeChildren" } },
-    exit: { opacity: 0, transition: { duration: 0.1, type: 'tween', staggerChildren: 0.03, when: "afterChildren" } }
+    exit: { opacity: 0, transition: { duration: 0, type: 'tween', staggerChildren: 0.05, when: "afterChildren" } }
 };
 
 const songPageItemVariants = {
-    hidden: { opacity: 0, y: -30, scale: 0.8 },
+    hidden: { opacity: 0, y: -30, scale: 0.5 },
     visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, type: 'tween' } },
-    exit: { opacity: 0, y: 20, scale: 0.8, transition: { duration: 0.4, type: 'tween' } }
+    exit: { opacity: 0, y: 20, scale: 0.5, transition: { duration: 0.4, type: 'tween' } }
 };
 
 const SongPage = () => {

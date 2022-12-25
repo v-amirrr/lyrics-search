@@ -23,7 +23,7 @@ const nothingVariants = {
 };
 
 const songsVariants = {
-    visible: { transition: { staggerChildren: 0.1 } },
+    visible: { transition: { staggerChildren: 0.05 } },
     exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3, type: 'tween', when: "beforeChildren" } }
 };
 

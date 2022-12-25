@@ -58,43 +58,43 @@
                 font-size: 1rem;
                 font-weight: 600;
                 color: #ccc;
-                margin: .9rem 0;
+                margin: .7rem 0;
             }
 
             &__album {
                 font-size: .8rem;
                 font-weight: 500;
                 color: #aaa;
-                margin: .8rem 0;
+                margin: .6rem 0;
             }
 
             &__genre {
                 font-size: .6rem;
                 font-weight: 500;
                 color: #aaa;
-                margin: .7rem 0;
+                margin: .5rem 0;
             }
 
             &__lyrics--close {
-                width: 15rem;
+                width: 10rem;
                 max-height: 15rem;
                 padding: .5rem;
                 background-color: #ffffff11;
-                border-radius: 6px;
-                -webkit-border-radius: 6px;
-                -moz-border-radius: 6px;
-                -ms-border-radius: 6px;
-                -o-border-radius: 6px;
-                margin: .6rem 0;
+                border-radius: 50px;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                -ms-border-radius: 50px;
+                -o-border-radius: 50px;
+                margin: 1.2rem 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                transition: width .3s, height .5s;
-                -webkit-transition: width .3s, height .5s;
-                -moz-transition: width .3s, height .5s;
-                -ms-transition: width .3s, height .5s;
-                -o-transition: width .3s, height .5s;
+                transition: width .3s, height .5s, border-radius .3s;
+                -webkit-transition: width .3s, height .5s, border-radius .3s;
+                -moz-transition: width .3s, height .5s, border-radius .3s;
+                -ms-transition: width .3s, height .5s, border-radius .3s;
+                -o-transition: width .3s, height .5s, border-radius .3s;
 
                 & div:nth-child(1) {
                     position: relative;
@@ -166,21 +166,21 @@
                 max-height: 15rem;                
                 padding: .5rem;
                 background-color: #ffffff11;
-                border-radius: 6px;
-                -webkit-border-radius: 6px;
-                -moz-border-radius: 6px;
-                -ms-border-radius: 6px;
-                -o-border-radius: 6px;
-                margin: .6rem 0;
+                border-radius: 20px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                -ms-border-radius: 20px;
+                -o-border-radius: 20px;
+                margin: 1.2rem 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                transition: width .3s, height .5s;
-                -webkit-transition: width .3s, height .5s;
-                -moz-transition: width .3s, height .5s;
-                -ms-transition: width .3s, height .5s;
-                -o-transition: width .3s, height .5s;
+                transition: width .3s, height .5s, border-radius .3s;
+                -webkit-transition: width .3s, height .5s, border-radius .3s;
+                -moz-transition: width .3s, height .5s, border-radius .3s;
+                -ms-transition: width .3s, height .5s, border-radius .3s;
+                -o-transition: width .3s, height .5s, border-radius .3s;
                 
                 & div:nth-child(1) {
                     position: relative;

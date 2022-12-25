@@ -53,7 +53,6 @@
             flex-direction: column;
             width: 18rem;
             height: 12rem;
-            border-radius: 15px;
             box-shadow: #0000001a 0px 6px 12px;
             cursor: pointer;
             background-color: #ffffff08;
@@ -68,6 +67,11 @@
             -moz-transition: background .3s;
             -ms-transition: background .3s;
             -o-transition: background .3s;
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -ms-border-radius: 20px;
+            -o-border-radius: 20px;
 
             p {
                 max-width: 80%;
