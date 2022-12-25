@@ -5,6 +5,7 @@ import { useLocation, useParams, Link } from 'react-router-dom';
 import { useGetLyricsQuery, useGetTrackQuery } from '../redux/apiSlice';
 
 import Loader from './Loader';
+import Error from './Error';
 
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { IoChevronDown } from 'react-icons/io5';
@@ -62,52 +63,54 @@ const SongPage = () => {
         <>
             <motion.section className='song-page' initial='hidden' animate='visible' exit='exit' variants={songPageVariants}>
                 <AnimatePresence exitBeforeEnter>
-                    {loaderShow ?
+                    {loaderShow && !isErrorLyrics && !isErrorTrack ?
                     <Loader key="loader-song-page" /> :
-                    <motion.div className='song-page__song-container' variants={songPageContainerVariants}>
-                        <div className='song-page__song-container__song-data'>
-                            <motion.p className='song-page__song-container__song-data__track' variants={songPageItemVariants}>
-                                {trackData?.message?.body?.track?.track_name}
-                            </motion.p>
-                            <motion.p className='song-page__song-container__song-data__artist' variants={songPageItemVariants}>
-                                {trackData?.message?.body?.track?.artist_name}
-                            </motion.p>
-                            <motion.p className='song-page__song-container__song-data__album' variants={songPageItemVariants}>
-                                {trackData?.message?.body?.track?.album_name}
-                            </motion.p>
-                            <motion.p className='song-page__song-container__song-data__genre' variants={songPageItemVariants}>
-                                {trackData?.message?.body?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}
-                            </motion.p>
-                            <motion.div className={inputCheckbox ? 'song-page__song-container__song-data__lyrics--open' : 'song-page__song-container__song-data__lyrics--close'} variants={songPageItemVariants}>
-                                <div>
-                                    Song Lyrics
-                                    <input type="checkbox" onChange={() => setInputCheckbox(!inputCheckbox)} checked={inputCheckbox}/>
-                                    <i><IoChevronDown /></i>
-                                </div>
-                                <div>
-                                    {trackData?.message?.body?.track?.has_lyrics ?
-                                    trackLyrics?.message?.body?.lyrics?.lyrics_body :
-                                    "There is no lyrics avaible for this song."}
-                                </div>
+                        isErrorLyrics || isErrorLyrics ?
+                        <Error key="error-song-page" /> :
+                        <motion.div className='song-page__song-container' variants={songPageContainerVariants}>
+                            <div className='song-page__song-container__song-data'>
+                                <motion.p className='song-page__song-container__song-data__track' variants={songPageItemVariants}>
+                                    {trackData?.message?.body?.track?.track_name}
+                                </motion.p>
+                                <motion.p className='song-page__song-container__song-data__artist' variants={songPageItemVariants}>
+                                    {trackData?.message?.body?.track?.artist_name}
+                                </motion.p>
+                                <motion.p className='song-page__song-container__song-data__album' variants={songPageItemVariants}>
+                                    {trackData?.message?.body?.track?.album_name}
+                                </motion.p>
+                                <motion.p className='song-page__song-container__song-data__genre' variants={songPageItemVariants}>
+                                    {trackData?.message?.body?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}
+                                </motion.p>
+                                <motion.div className={inputCheckbox ? 'song-page__song-container__song-data__lyrics--open' : 'song-page__song-container__song-data__lyrics--close'} variants={songPageItemVariants}>
+                                    <div>
+                                        Song Lyrics
+                                        <input type="checkbox" onChange={() => setInputCheckbox(!inputCheckbox)} checked={inputCheckbox}/>
+                                        <i><IoChevronDown /></i>
+                                    </div>
+                                    <div>
+                                        {trackData?.message?.body?.track?.has_lyrics ?
+                                        trackLyrics?.message?.body?.lyrics?.lyrics_body :
+                                        "There is no lyrics avaible for this song."}
+                                    </div>
+                                </motion.div>
+                            </div>
+
+                            <motion.a className="song-page__song-container__song-link link" href={trackData?.message?.body?.track?.track_share_url} target="_blank" rel="noopener noreferror" variants={songPageItemVariants}>
+                                Musixmatch Link
+                            </motion.a>
+
+                            <motion.div className='song-page__song-container__icons' variants={songPageItemVariants}>
+                                {trackData?.message?.body?.track?.explicit ? <span>E</span> : ""}
+                                {trackData?.message?.body?.track?.has_lyrics ? <span>L</span> : ""}
                             </motion.div>
-                        </div>
 
-                        <motion.a className="song-page__song-container__song-link link" href={trackData?.message?.body?.track?.track_share_url} target="_blank" rel="noopener noreferror" variants={songPageItemVariants}>
-                            Musixmatch Link
-                        </motion.a>
-
-                        <motion.div className='song-page__song-container__icons' variants={songPageItemVariants}>
-                            {trackData?.message?.body?.track?.explicit ? <span>E</span> : ""}
-                            {trackData?.message?.body?.track?.has_lyrics ? <span>L</span> : ""}
-                        </motion.div>
-
-                        <Link to="/">
-                            <motion.div className='song-page__song-container__back-btn' variants={songPageItemVariants}>
-                                <i><IoMdArrowRoundBack /></i>
-                                <p>Back To Home</p>
-                            </motion.div>
-                        </Link>
-                    </motion.div>}
+                            <Link to="/">
+                                <motion.div className='song-page__song-container__back-btn' variants={songPageItemVariants}>
+                                    <i><IoMdArrowRoundBack /></i>
+                                    <p>Back To Home</p>
+                                </motion.div>
+                            </Link>
+                        </motion.div>}
                 </AnimatePresence>
             </motion.section>
         </>
