@@ -103,15 +103,15 @@ const SongPage = () => {
                                 {trackData?.message?.body?.track?.explicit ? <span>E</span> : ""}
                                 {trackData?.message?.body?.track?.has_lyrics ? <span>L</span> : ""}
                             </motion.div>
-
-                            <Link to="/">
-                                <motion.div className='song-page__song-container__back-btn' variants={songPageItemVariants}>
-                                    <i><IoMdArrowRoundBack /></i>
-                                    <p>Back To Home</p>
-                                </motion.div>
-                            </Link>
                         </motion.div>}
                 </AnimatePresence>
+
+                <Link to="/">
+                    <motion.div className='song-page__song-container__back-btn' variants={songPageItemVariants}>
+                        <i><IoMdArrowRoundBack /></i>
+                        <p>Back To Home</p>
+                    </motion.div>
+                </Link>
             </motion.section>
         </>
     );
