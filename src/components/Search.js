@@ -35,7 +35,7 @@ const Search = () => {
     const searchSubmitHandler = e => {
         e.preventDefault();
         setSearchButtonClicked(true);
-        dispatch(setSearch(inputText));
+        dispatch(setSearch(inputText.toLowerCase()));
     };
 
     const { data } = useGetSearchTracksQuery(searchInput, { 
