@@ -35,10 +35,10 @@ const Search = () => {
     const searchSubmitHandler = e => {
         e.preventDefault();
         setSearchButtonClicked(true);
-        dispatch(setSearch(inputText.toLowerCase()));
+        dispatch(setSearch(inputText));
     };
 
-    const { data } = useGetSearchTracksQuery(searchInput, { 
+    const { data } = useGetSearchTracksQuery(searchInput.toLowerCase(), { 
         skip: !searchButtonClicked
     });
 
