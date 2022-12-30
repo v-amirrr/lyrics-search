@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const apiSlice = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://api.musixmatch.com/ws/1.1/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://api.codetabs.com/v1/proxy?quest=https://api.musixmatch.com/ws/1.1/' }),
     endpoints: (builder) => ({
         getSearchTracks: builder.query({
             query: (songName) => ({ url: `track.search?q_track=${songName}&apikey=${process.env.REACT_APP_API_KEY}` }),
