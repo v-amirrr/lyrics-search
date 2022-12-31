@@ -76,7 +76,7 @@ const Songs = () => {
                                 </motion.div> :
                                 <motion.div key="songs" className='songs-section__songs-container' initial='hidden' animate='visible' exit='exit' variants={songsVariants}>
                                     {songsList?.message?.body?.track_list?.map(item => (
-                                        <Link to={`/${item.track.commontrack_id}`} key={item.track.commontrack_id} state={item.track.has_lyrics}>
+                                        <Link to={`/${item.track.commontrack_id}`} key={item.track.commontrack_id}>
                                             <motion.div className='songs-section__songs-container__song' variants={songVariants} whileTap={{ scale: 0.8 }}>
                                                 <div className='songs-section__songs-container__song__icons'>
                                                     {item.track.explicit ? <span>E</span> : ""}

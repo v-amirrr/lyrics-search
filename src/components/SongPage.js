@@ -33,12 +33,11 @@ const songPageItemVariants = {
 const SongPage = () => {
 
     const { id } = useParams();
-    const location = useLocation();
 
     const { data: trackData, isLoading: isLoadingTrack, isError: isErrorTrack } = useGetTrackQuery(id);
 
     const { data: trackLyrics, isLoading: isLoadingLyrics, isError: isErrorLyrics } = useGetLyricsQuery(id, {
-        skip: !location.state
+        skip: !trackData?.message?.body?.track?.has_lyrics,
     });
 
     const [inputCheckbox, setInputCheckbox] = useState(false);
