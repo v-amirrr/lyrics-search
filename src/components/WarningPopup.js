@@ -55,7 +55,7 @@ const WarningPopup = () => {
                             <motion.p className="warning-popup__description-text" variants={popUpItemVariants}>
                                 In this app you can search for any song you want and then if you click on them, you'll see more information about that song, such as artist, album, genre, lyrics and etc.
                             </motion.p>
-                            <motion.button className="warning-popup__button" variants={popUpItemVariants} onClick={warningPopUpSubmitHandler} autoFocus>let's go</motion.button>
+                            <motion.button className="warning-popup__button" variants={popUpItemVariants} onClick={warningPopUpSubmitHandler} autoFocus>LET'S GO</motion.button>
                         </motion.div>
                     </motion.section>
                 }

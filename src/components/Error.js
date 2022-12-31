@@ -17,7 +17,7 @@ const Error = () => {
                     Looks like we have a problem.<br />Please check your connection status and try again.
                 </p>
                 <p className='error-container__warning'>
-                    If you're in sanctioned countries like <b>Iran</b>, you have to turn on your <b>VPN</b> for using the app. If you're already using a VPN, clearly it's not working so please use another one.
+                    If you're in sanctioned countries like <b>Iran</b>, try using a <b>VPN</b> and if you're already using a VPN, please change it or turn it off.
                 </p>
             </motion.section> 
         </>

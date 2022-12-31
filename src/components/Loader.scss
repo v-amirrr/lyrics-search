@@ -34,3 +34,24 @@
         width: 1rem;
     }
 }
+
+@media (max-width: 768px) {
+    .loader {
+        &__container__line {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+
+    @keyframes loadingB {
+        0% {
+            width: 2rem;
+        }
+        50% {
+            width: 3rem;
+        }
+        100% {
+            width: 2rem;
+        }
+    }
+}

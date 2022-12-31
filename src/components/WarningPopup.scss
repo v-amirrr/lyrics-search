@@ -19,8 +19,7 @@
         flex-direction: column;
         width: fit-content;
         height: 50%;
-        max-width: 70%;
-        max-height: 50%;
+        max-width: 100%;
         padding: 2rem;
         text-align: center;
     }
@@ -29,23 +28,26 @@
         text-transform: uppercase;
         letter-spacing: -2px;
         word-spacing: 6px;
+        white-space: nowrap;
     }
 
     &__warning-text {
         margin: 1rem;
         color: #ff0000;
         font-weight: 400;
+        max-width: 50%;
     }
 
     &__description-text {
         word-spacing: 2px;
-        font-weight: 400;
+        font-weight: 300;
         font-size: .8rem;
         color: #ccc;
         margin: .7rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        max-width: 40%;
     }
 
     &__button {
@@ -54,13 +56,12 @@
         font-weight: 600;
         border: none;
         cursor: pointer;
-        text-transform: uppercase;
         border-radius: 50px;
         font-family: 'Outfit', sans-serif;
-        background-color: #ffffff08;
+        background-color: #ffffff11;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-        width: 20rem;
-        height: 2.5rem;
+        width: 40%;
+        padding: .5rem 0;
         transition: background .3s;
 
         &:hover {
@@ -73,24 +74,27 @@
     }
 }
 
-@media (max-width: 900px) {
-    .warnin-popup {
-        &__container {
-            max-width: 90%;
-            max-height: 40%;
-            padding: .5rem;
-        }
-    
+@media (max-width: 1200px) {
+    .warning-popup {
         &__title {
-            font-size: 1.2rem;
+            font-size: 2rem;
+            letter-spacing: -1px;
         }
-    
+
         &__warning-text {
-            font-size: .8rem;
+            font-size: 1.2rem;
+            max-width: 70%;
         }
-    
-        &__description-text.popup-text {
-            font-size: .6rem;
+
+        &__description-text {
+            font-size: .8rem;
+            max-width: 60%;
+        }
+
+        &__button {
+            font-size: 1.5rem;
+            width: 60%;
+            padding: .8rem 0;
         }
     }
 }

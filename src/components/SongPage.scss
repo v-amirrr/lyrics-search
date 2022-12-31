@@ -77,9 +77,11 @@
 
             &__lyrics--close {
                 width: 10rem;
-                max-height: 15rem;
+                height: 2.5rem;
                 padding: .5rem;
-                background-color: #ffffff11;
+                background-color: #00000044;
+                backdrop-filter: blur(16px) saturate(100%);
+                -webkit-backdrop-filter: blur(16px) saturate(100%);
                 border-radius: 50px;
                 -webkit-border-radius: 50px;
                 -moz-border-radius: 50px;
@@ -90,11 +92,11 @@
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                transition: width .3s, height .5s, border-radius .3s;
-                -webkit-transition: width .3s, height .5s, border-radius .3s;
-                -moz-transition: width .3s, height .5s, border-radius .3s;
-                -ms-transition: width .3s, height .5s, border-radius .3s;
-                -o-transition: width .3s, height .5s, border-radius .3s;
+                transition: width .3s, height .5s, border-radius .3s, border .3s;
+                -webkit-transition: width .3s, height .5s, border-radius .3s, border .3s;
+                -moz-transition: width .3s, height .5s, border-radius .3s, border .3s;
+                -ms-transition: width .3s, height .5s, border-radius .3s, border .3s;
+                -o-transition: width .3s, height .5s, border-radius .3s, border .3s;
 
                 & div:nth-child(1) {
                     position: relative;
@@ -163,9 +165,11 @@
 
             &__lyrics--open {
                 width: 20rem;
-                max-height: 15rem;                
+                height: 15rem;                
                 padding: .5rem;
-                background-color: #ffffff11;
+                background-color: #00000044;
+                backdrop-filter: blur(16px) saturate(100%);
+                -webkit-backdrop-filter: blur(16px) saturate(100%);
                 border-radius: 20px;
                 -webkit-border-radius: 20px;
                 -moz-border-radius: 20px;
@@ -176,11 +180,11 @@
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                transition: width .3s, height .5s, border-radius .3s;
-                -webkit-transition: width .3s, height .5s, border-radius .3s;
-                -moz-transition: width .3s, height .5s, border-radius .3s;
-                -ms-transition: width .3s, height .5s, border-radius .3s;
-                -o-transition: width .3s, height .5s, border-radius .3s;
+                transition: width .3s, height .5s, border-radius .3s, border .3s;
+                -webkit-transition: width .3s, height .5s, border-radius .3s, border .3s;
+                -moz-transition: width .3s, height .5s, border-radius .3s, border .3s;
+                -ms-transition: width .3s, height .5s, border-radius .3s, border .3s;
+                -o-transition: width .3s, height .5s, border-radius .3s, border .3s;
                 
                 & div:nth-child(1) {
                     position: relative;
@@ -301,6 +305,91 @@
 
             &:active {
                 background-color: #ffffff3a;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .song-page {
+        &__song-container {
+            &__icons {
+                span {
+                    font-size: 1.3rem;
+                    width: 2.4rem;
+                    height: 2.4rem;
+                    margin: 0 .2rem;
+                }
+            }
+
+            &__song-data {
+                &__track {
+                    font-size: 3.5rem;
+                    margin: 2rem 0;
+                }
+
+                &__artist {
+                    font-size: 2.5rem;
+                    margin: 1.5rem 0;
+                }
+
+                &__album {
+                    font-size: 1.5rem;
+                    margin: 1rem 0;
+                }
+
+                &__genre {
+                    font-size: 1rem;
+                    margin: .5rem 0;
+                }
+
+                &__lyrics--close {
+                    width: 15rem;
+                    height: 3.5rem;            
+                    border: solid 1px #ffffff00;
+
+                    & div:nth-child(1) {
+                        font-size: 1.5rem;
+
+                        i {
+                            font-size: 2rem;
+                        }
+                    }
+                }
+
+                &__lyrics--open {
+                    width: 28rem;
+                    height: 22rem;           
+                    border: solid 1px #ffffff11;
+
+                    & div:nth-child(1) {
+                        font-size: 1.5rem;
+
+                        i {
+                            font-size: 2rem;
+                        }
+                    }
+
+                    & div:nth-child(2) {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            &__song-link {
+                font-size: 1rem;
+            }
+
+            &__back-btn {
+                padding: .5rem .8rem;
+    
+                i {
+                    font-size: 1.5rem;
+                }
+    
+                p {
+                    font-size: 1.2rem;
+                }
             }
         }
     }

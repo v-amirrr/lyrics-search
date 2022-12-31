@@ -127,11 +127,11 @@
                     height: .8rem;
                     background-color: #00000055;
                     margin: 0 .05rem;
-                    border-radius: 6px;
-                    -webkit-border-radius: 6px;
-                    -moz-border-radius: 6px;
-                    -ms-border-radius: 6px;
-                    -o-border-radius: 6px;
+                    border-radius: 4px;
+                    -webkit-border-radius: 4px;
+                    -moz-border-radius: 4px;
+                    -ms-border-radius: 4px;
+                    -o-border-radius: 4px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -178,6 +178,47 @@
             }
 
             background-color: #ffffff11;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .songs-section {
+        padding: 0 2rem;
+        height: 80vh;
+
+        &__songs-container {
+            &__song {
+                width: 25rem;
+                height: 17rem;
+                margin: 2rem;
+
+                &__name {
+                    font-size: 2.5rem;
+                }
+    
+                &__artist {
+                    font-size: 1.5rem;
+                }
+    
+                &__genre {
+                    font-size: 1rem;
+                }
+    
+                &__click-text {
+                    font-size: 1rem;
+                    height: 2.8rem;
+                }
+    
+                &__icons {
+                    span {
+                        font-size: 1.3rem;
+                        width: 2rem;
+                        height: 2rem;
+                        margin: 0 .15rem;
+                    }
+                }
+            }
         }
     }
 }

@@ -60,7 +60,7 @@ const Search = () => {
                         value={inputText} 
                         onChange={e => setInputText(e.target.value)} 
                         ref={searchInputRef} 
-                        placeholder="Search Song..." 
+                        placeholder="Search a song..." 
                         autoFocus
                     />
                     <i className={inputText ? 'search__form__clear-icon--show' : 'search__form__clear-icon--hide'} onClick={clearButtonHandler}><IoClose /></i>
