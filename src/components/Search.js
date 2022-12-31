@@ -36,6 +36,9 @@ const Search = () => {
         e.preventDefault();
         setSearchButtonClicked(true);
         dispatch(setSearch(inputText));
+        if (is_touch_enabled()) {
+            searchInputRef.current.blur();
+        }
     };
 
     const { data } = useGetSearchTracksQuery(searchInput.toLowerCase(), { 
@@ -49,6 +52,12 @@ const Search = () => {
     useEffect(() => {
         setInputText(searchInput);
     }, []);
+    
+    function is_touch_enabled() {
+        return ( 'ontouchstart' in window ) ||
+            ( navigator.maxTouchPoints > 0 ) ||
+            ( navigator.msMaxTouchPoints > 0 );
+    }
 
     return (
         <>
@@ -56,12 +65,12 @@ const Search = () => {
                 <form className='search__form'>
                     <input
                         className='search__form__input'
-                        type="text" 
-                        value={inputText} 
-                        onChange={e => setInputText(e.target.value)} 
-                        ref={searchInputRef} 
-                        placeholder="Search a song..." 
-                        autoFocus
+                        type="text"
+                        value={inputText}
+                        onChange={e => setInputText(e.target.value)}
+                        ref={searchInputRef}
+                        placeholder="Search a song..."
+                        autoFocus={!is_touch_enabled()}
                     />
                     <i className={inputText ? 'search__form__clear-icon--show' : 'search__form__clear-icon--hide'} onClick={clearButtonHandler}><IoClose /></i>
                     <button className='search__form__submit-btn' type='submit' onClick={searchSubmitHandler}>search</button>
