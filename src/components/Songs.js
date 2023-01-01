@@ -39,16 +39,14 @@ const Songs = () => {
 
     const searchInput = useSelector(state => state.searchStore.searchInputText);
 
-    const { data: songsList, isLoading, isError } = useGetSearchTracksQuery(searchInput);
+    const { data: songsList, isLoading, isError } = useGetSearchTracksQuery(searchInput.toLowerCase());
 
     useEffect(() => {
         setLoaderShow(true);
+        setNothingWasFound(false);
         if (!isLoading) {
             setTimeout(() => {
                 setLoaderShow(false);
-                if (songsList?.message?.body?.track_list.length == 0) {
-                    setNothingWasFound(true);
-                }
             }, 800);
         }
     }, [searchInput]);
@@ -56,11 +54,16 @@ const Songs = () => {
     useEffect(() => {
         if (!isLoading) {
             setLoaderShow(false);
-            if (songsList?.message?.body?.track_list.length == 0) {
-                setNothingWasFound(true);
-            }
         }
     }, [isLoading]);
+
+    useEffect(() => {
+        if (songsList?.message?.body?.track_list.length == 0) {
+            setNothingWasFound(true);
+        } else {
+            setNothingWasFound(false)
+        }
+    }, [songsList]);
 
     return (
         <>
