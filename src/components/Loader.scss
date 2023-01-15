@@ -35,7 +35,28 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
+    .loader {
+        &__container__line {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    @keyframes loadingB {
+        0% {
+            width: 1.5rem;
+        }
+        50% {
+            width: 2.5rem;
+        }
+        100% {
+            width: 1.5rem;
+        }
+    }
+}
+
+@media (max-width: 700px) {
     .loader {
         &__container__line {
             width: 2rem;

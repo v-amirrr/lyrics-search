@@ -126,6 +126,102 @@
 @media (max-width: 1200px) {
     .search {
         &__form {
+            width: 26rem;
+            height: 3rem;
+
+            &__input {
+                font-size: 1.2rem;
+                left: 1rem;
+            }
+
+            &__submit-btn {
+                font-size: 1.2rem;
+            }
+
+            &__clear-icon {
+                &--show {
+                    font-size: 1.5rem;
+                }
+
+                &--hide {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        &--half {
+            height: 15%;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .search {
+        &__form {
+            width: 28rem;
+            height: 3.3rem;
+
+            &__input {
+                font-size: 1.3rem;
+                left: 1rem;
+            }
+
+            &__submit-btn {
+                font-size: 1.3rem;
+            }
+
+            &__clear-icon {
+                &--show {
+                    font-size: 1.8rem;
+                }
+
+                &--hide {
+                    font-size: 1.8rem;
+                }
+            }
+        }
+
+        &--half {
+            height: 15%;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .search {
+        &__form {
+            width: 30rem;
+            height: 3.6rem;
+
+            &__input {
+                font-size: 1.4rem;
+                left: 1rem;
+            }
+
+            &__submit-btn {
+                font-size: 1.4rem;
+            }
+
+            &__clear-icon {
+                &--show {
+                    font-size: 1.9rem;
+                }
+
+                &--hide {
+                    font-size: 1.9rem;
+                }
+            }
+        }
+
+        &--half {
+            height: 15%;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .search {
+        &__form {
             width: 32rem;
             height: 4rem;
 
