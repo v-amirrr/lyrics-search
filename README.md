@@ -1,70 +1,9 @@
-# Getting Started with Create React App
+# Lyrics Search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project allows you to search for any song you want. Then you can visit the song's page to see the lyrics.
+Live Demo[https://songs-search.vercel.app/]
 
-## Available Scripts
 
-In the project directory, you can run:
+## How You Can Use It
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+When you first open the project, you'll see a warning pop-up. It tells you how you can use the project and what should you do if you're in a sanctioned country. After that, there is a search bar where you can enter the name of the song you want. Then based on what you searched you'll see the songs. Of course if you search nonsence you'll get a NOTHING WAS FOUND text. And if you have a bad connection you'll get a connection error. But if everything goes right you can pick what song you want and go to its page. There are two signs in song's box. One is L and if the song's box has this sign it means that the song has lyrics. And the other sign is E which means weather the song has swear words or not. By clicking on the song's box you can enter to that song page. In the song page we've got the signs, the back home button, title, artists, album, genres, lyrics, and Musixmatch Link (that's because we get all of data from their API). If you want to see the lyrics, all you have to do is to click on Song Lyrics box. Then the box will expand and you'll see the lyrics. If there's no lyrics avaible for the song you'll get "There is no lyrics avaible for this song". By the way we can only see some of the lyrics not all of it because the API is not for commercial use. And by clicking on back home button you'll get back to home page and you can go to another song page or search something completely new.
