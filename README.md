@@ -29,31 +29,11 @@ Then based on what you searched you'll see the songs.
 <br />
 <br />
 <br />
-Of course if you search nonsense like me you'll get a NOTHING WAS FOUND text. 
-<br />
-<br />
-<img src="./src/assets/images/readme/song-nothing.jpg" width="70%" />
-<br />
-<br />
-<br />
-And if you have a bad connection you'll get a connection error. 
-<br />
-<br />
-<img src="./src/assets/images/readme/song-error.jpg" width="70%" />
-<br />
-<br />
-<br />
-But if everything goes right you can pick what song you want and go to its page. 
-<br />
-<br />
 There are two signs in song's box. 
-<br />
 <br />
 One of them is the L sign. It means that the song has lyrics. 
 <br />
-<br />
 The other one is E sign which means the song has swear words. 
-<br />
 <br />
 By clicking on the song's box you can enter to that song page. In the song page we've got the signs, the back home button, title, artists, album, genres, lyrics, and Musixmatch Link (that's because we get all of data from their API). 
 <br />
@@ -66,13 +46,6 @@ If you want to see the lyrics, all you have to do is to click on Song Lyrics box
 <br />
 <br />
 <img src="./src/assets/images/readme/song-page-lyrics.jpg" width="70%" />
-<br />
-<br />
-<br />
-If there's no lyrics avaible for the song you'll get "There is no lyrics avaible for this song". 
-<br />
-<br />
-<img src="./src/assets/images/readme/no-lyrics.jpg" width="70%" />
 <br />
 <br />
 <br />
