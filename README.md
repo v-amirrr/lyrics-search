@@ -10,6 +10,7 @@ This project allows you to search for any song you want. Then you can visit the 
 
 When you first open the project, you'll see a warning pop-up. It tells you how you can use the project and what should you do if you're in a sanctioned country. 
 <br />
+<br />
 <img src="./src/assets/images/readme/pop-up.jpg" width="60%" />
 <br />
 <br />
@@ -23,10 +24,12 @@ One of them is the L sign. It means that the song has lyrics.
 <br />
 The other one is E sign which means the song has swear words. 
 <br />
+<br />
 <img src="./src/assets/images/readme/songs.jpg" width="60%" />
 <br />
 <br />
 By clicking on the box you can enter to song page. In the song page we've got the signs, the back home button, title, artists, album, genres, lyrics, and Musixmatch Link (that's because we get all of data from their API). 
+<br />
 <br />
 <img src="./src/assets/images/readme/song-page.jpg" width="60%" />
 <br />
@@ -34,5 +37,6 @@ By clicking on the box you can enter to song page. In the song page we've got th
 If you want to see the lyrics, all you have to do is to click on Song Lyrics box. Then the box will expand and you'll see the lyrics. 
 <br />
 By the way we can only see some of the lyrics not all of it because the API is not for commercial use.
+<br />
 <br />
 <img src="./src/assets/images/readme/song-page-lyrics.jpg" width="60%" />
