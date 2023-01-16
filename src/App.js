@@ -17,7 +17,7 @@ const App = () => {
 
     return (
         <>
-            <Background><img src={backgroundImage} alt="background" /><div></div></Background>
+            <Background><img src={backgroundImage} alt="background" /></Background>
             <AnimatePresence exitBeforeEnter>
                 <WarningPopup />
                 <Routes location={location} key={location.key}>

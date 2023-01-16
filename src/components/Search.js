@@ -36,6 +36,8 @@ const Search = () => {
         e.preventDefault();
         setSearchButtonClicked(true);
         dispatch(setSearch(inputText));
+
+        // keyboard situation in mobiles
         if (is_touch_enabled()) {
             searchInputRef.current.blur();
         }
@@ -57,7 +59,7 @@ const Search = () => {
         return ( 'ontouchstart' in window ) ||
             ( navigator.maxTouchPoints > 0 ) ||
             ( navigator.msMaxTouchPoints > 0 );
-    }
+    };
 
     return (
         <>

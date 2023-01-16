@@ -31,13 +31,13 @@ const WarningPopup = () => {
             setWarningPopup(true);
         }
     }, []);
-    
+
     const warningPopUpSubmitHandler = e => {
         e.preventDefault();
         setWarningPopup(false);
         sessionStorage.setItem("warning-popup", "true");
     };
-    
+
     return (
         <>
             <AnimatePresence>
