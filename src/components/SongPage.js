@@ -64,7 +64,7 @@ const SongPage = () => {
                 <AnimatePresence exitBeforeEnter>
                     {loaderShow && !isErrorLyrics && !isErrorTrack ?
                     <Loader key="loader-song-page" /> :
-                        isErrorLyrics || isErrorLyrics ?
+                        isErrorTrack || isErrorLyrics ?
                         <Error key="error-song-page" /> :
                         <motion.div className='song-page__song-container' variants={songPageContainerVariants}>
                             <div className='song-page__song-container__song-data'>

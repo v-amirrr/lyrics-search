@@ -36,6 +36,7 @@ const Songs = () => {
 
     const [loaderShow, setLoaderShow] = useState(true);
     const [nothingWasFound, setNothingWasFound] = useState(false);
+    const [codeError, setCodeError] = useState(false);
 
     const searchInput = useSelector(state => state.searchStore.searchInputText);
 
@@ -58,10 +59,14 @@ const Songs = () => {
     }, [isLoading]);
 
     useEffect(() => {
-        if (songsList?.message?.body?.track_list.length == 0) {
+        if (songsList?.message?.body?.track_list?.length == 0) {
             setNothingWasFound(true);
         } else {
             setNothingWasFound(false)
+        }
+
+        if (songsList?.message?.header?.status_code && songsList?.message?.header?.status_code != 200) {
+            setCodeError(true);
         }
     }, [songsList]);
 
@@ -69,9 +74,9 @@ const Songs = () => {
         <>
             <motion.section className='songs-section' initial='hidden' animate='visible' exit='exit' variants={songsContainerVariants}>
                     <AnimatePresence exitBeforeEnter>
-                        {loaderShow && !isError ?
+                        {loaderShow && !isError && !codeError ?
                         <Loader key="loader-songs"/> :
-                            isError ?
+                            isError || codeError ?
                             <Error key="error-songs" /> :
                                 nothingWasFound ?
                                 <motion.div key="nothing-was-found" initial='hidden' animate='visible' exit='exit' variants={nothingVariants}>
