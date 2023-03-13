@@ -8,6 +8,7 @@
     -moz-transition: height .3s;
     -ms-transition: height .3s;
     -o-transition: height .3s;
+    z-index: 2;
 
     &__form {
         position: relative;

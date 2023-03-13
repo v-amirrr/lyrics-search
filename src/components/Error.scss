@@ -6,11 +6,15 @@
     width: 35rem;
     padding: 3rem;
     text-align: center;
-    border-radius: 15px;
+    border-radius: 20px;
     box-shadow: #0000001a 0px 6px 12px;
     background-color: #ffffff05;
     backdrop-filter: blur(10px) saturate(100%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
     
     &__message {
         font-size: 1.2rem;
