@@ -33,19 +33,23 @@ const songPageItemVariants = {
 const SongPage = () => {
 
     const { id } = useParams();
-
-    const { data: trackData, isLoading: isLoadingTrack, isError: isErrorTrack } = useGetTrackQuery(id);
-
-    const { data: trackLyrics, isLoading: isLoadingLyrics, isError: isErrorLyrics } = useGetLyricsQuery(id, {
-        skip: !trackData?.message?.body?.track?.has_lyrics,
-    });
+    const location = useLocation();
 
     const [inputCheckbox, setInputCheckbox] = useState(false);
     const [loaderShow, setLoaderShow] = useState(true);
+    const [trackData, setTrackData] = useState(null);
+
+    const { data: trackDataFromAPI, isLoading: isLoadingTrackFromAPI, isError: isErrorTrackFromAPI } = useGetTrackQuery(id, {
+        skip: !!location.state
+    });
+
+    const { data: trackLyrics, isLoading: isLoadingLyrics, isError: isErrorLyrics } = useGetLyricsQuery(id, {
+        skip: trackData?.message?.body?.track?.has_lyrics,
+    });
 
     useEffect(() => {
         setLoaderShow(true);
-        if (!isLoadingTrack && !isLoadingLyrics) {
+        if (!isLoadingTrackFromAPI && !isLoadingLyrics) {
             setTimeout(() => {
                 setLoaderShow(false);
             }, 800);
@@ -53,32 +57,48 @@ const SongPage = () => {
     }, [id]);
 
     useEffect(() => {
-        if (!isLoadingTrack && !isLoadingLyrics) {
+        if (!isLoadingTrackFromAPI && !isLoadingLyrics) {
             setLoaderShow(false);
         }
-    }, [isLoadingTrack, isLoadingLyrics]);
+    }, [isLoadingTrackFromAPI, isLoadingLyrics]);
+
+    useEffect(() => {
+        if (location.state) {
+            setTrackData(location.state);
+        } else {
+            setTrackData(trackDataFromAPI?.message?.body?.track);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (location.state) {
+            setTrackData(location.state);
+        } else {
+            setTrackData(trackDataFromAPI?.message?.body?.track);
+        }
+    }, [trackDataFromAPI]);
 
     return (
         <>
             <motion.section className='song-page' initial='hidden' animate='visible' exit='exit' variants={songPageVariants}>
                 <AnimatePresence exitBeforeEnter>
-                    {loaderShow && !isErrorLyrics && !isErrorTrack ?
+                    {loaderShow && !isErrorLyrics && !isErrorTrackFromAPI ?
                     <Loader key="loader-song-page" /> :
-                        isErrorTrack || isErrorLyrics ?
+                    isLoadingTrackFromAPI || isErrorLyrics ?
                         <Error key="error-song-page" /> :
                         <motion.div className='song-page__song-container' variants={songPageContainerVariants}>
                             <div className='song-page__song-container__song-data'>
                                 <motion.p className='song-page__song-container__song-data__track' variants={songPageItemVariants}>
-                                    {trackData?.message?.body?.track?.track_name}
+                                    {trackData?.track_name}
                                 </motion.p>
                                 <motion.p className='song-page__song-container__song-data__artist' variants={songPageItemVariants}>
-                                    {trackData?.message?.body?.track?.artist_name}
+                                    {trackData?.artist_name}
                                 </motion.p>
                                 <motion.p className='song-page__song-container__song-data__album' variants={songPageItemVariants}>
-                                    {trackData?.message?.body?.track?.album_name}
+                                    {trackData?.album_name}
                                 </motion.p>
                                 <motion.p className='song-page__song-container__song-data__genre' variants={songPageItemVariants}>
-                                    {trackData?.message?.body?.track?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}
+                                    {trackData?.primary_genres?.music_genre_list[0]?.music_genre?.music_genre_name}
                                 </motion.p>
                                 <motion.div className={inputCheckbox ? 'song-page__song-container__song-data__lyrics--open' : 'song-page__song-container__song-data__lyrics--close'} variants={songPageItemVariants}>
                                     <div>
@@ -87,7 +107,7 @@ const SongPage = () => {
                                         <i><IoChevronDown /></i>
                                     </div>
                                     <div>
-                                        {trackData?.message?.body?.track?.has_lyrics ?
+                                        {trackData?.has_lyrics ?
                                         trackLyrics?.message?.body?.lyrics?.lyrics_body :
                                         "There is no lyrics avaible for this song."}
                                     </div>
