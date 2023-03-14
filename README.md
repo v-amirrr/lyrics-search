@@ -67,9 +67,9 @@ In the short term, we'll get an error.
 <br />
 So I use a new API call just to get specific song data to show on the song page. 
 <br />
-I'm trying to improve that because most of the time the user searches for something and then goes to the song page, and every time we get the data from the API when we can simply pass it. 
+Then I thought this isn't efficient because most of the time the user searches for something and then goes to the song page, but every time we get the data from the API when we can simply pass it. 
 <br />
-So what I'm going to do is to use them both. When the user has searched for something and we have the data passed to the song page, it will not use the hook to fetch the data from the API, and when the user hasn't searched for anything and just entered the URL, we'll use the useGetSong hook.
+So I used them both. When the user has searched for something and we have the data we pass it to the song page and it will not use the hook to fetch the data from the API. And when the user hasn't searched for anything and just entered the URL, we'll use the useGetSong hook to fetch the data and show them.
 <br />
 <br />
 <br />
