@@ -9,6 +9,18 @@ This project allows you to search for any song you want. Then you can visit the 
 <br />
 
 
+## Features
+
+- Search any song you want and get its information.
+- See whether each song has lyrics or explicit words.
+- See detailed information about each song on its page.
+- Read each song's lyrics.
+<br />
+<br />
+<br />
+<br />
+
+
 ## How To Use It
 
 When you first open the project, you'll see a warning pop-up. It tells you how you can use the project and what should you do if you're in a sanctioned country. 
